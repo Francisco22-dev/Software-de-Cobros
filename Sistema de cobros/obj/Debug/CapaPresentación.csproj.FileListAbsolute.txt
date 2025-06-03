@@ -1,0 +1,101 @@
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagados de programacion\Sistema de cobros\bin\Debug\Sistema de cobros.exe.config
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagados de programacion\Sistema de cobros\bin\Debug\Sistema de cobros.exe
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagados de programacion\Sistema de cobros\bin\Debug\Sistema de cobros.pdb
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagados de programacion\Sistema de cobros\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagados de programacion\Sistema de cobros\obj\Debug\CapaPresentación.csproj.AssemblyReference.cache
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagados de programacion\Sistema de cobros\obj\Debug\Sistema_de_cobros.Form1.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagados de programacion\Sistema de cobros\obj\Debug\Sistema_de_cobros.Login.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagados de programacion\Sistema de cobros\obj\Debug\Sistema_de_cobros.Properties.Resources.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagados de programacion\Sistema de cobros\obj\Debug\CapaPresentación.csproj.GenerateResource.cache
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagados de programacion\Sistema de cobros\obj\Debug\CapaPresentación.csproj.CoreCompileInputs.cache
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagados de programacion\Sistema de cobros\obj\Debug\CapaPres.314295FC.Up2Date
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagados de programacion\Sistema de cobros\obj\Debug\Sistema de cobros.exe
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagados de programacion\Sistema de cobros\obj\Debug\Sistema de cobros.pdb
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagados de programacion\Sistema de cobros\bin\Debug\CapaEntidad.dll
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagados de programacion\Sistema de cobros\bin\Debug\CapaNegocio.dll
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagados de programacion\Sistema de cobros\bin\Debug\CapaDatos.dll
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagados de programacion\Sistema de cobros\bin\Debug\CapaEntidad.pdb
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagados de programacion\Sistema de cobros\bin\Debug\CapaNegocio.pdb
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagados de programacion\Sistema de cobros\bin\Debug\CapaDatos.pdb
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagados de programacion\Sistema de cobros\obj\Debug\Sistema_de_cobros.Enfermería.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagados de programacion\Sistema de cobros\obj\Debug\Sistema_de_cobros.Laboratorio.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagados de programacion\Sistema de cobros\obj\Debug\Sistema_de_cobros.ADMContable.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagados de programacion\Sistema de cobros\obj\Debug\Sistema_de_cobros.Cejas_y_pestañas.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagados de programacion\Sistema de cobros\obj\Debug\Sistema_de_cobros.Sistema_de_uñas.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagados de programacion\Sistema de cobros\obj\Debug\Sistema_de_cobros.Uñas_avanzado.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\bin\Debug\Sistema de cobros.exe.config
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\bin\Debug\Sistema de cobros.exe.manifest
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\bin\Debug\Sistema de cobros.application
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\bin\Debug\Sistema de cobros.exe
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\bin\Debug\Sistema de cobros.pdb
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\bin\Debug\CapaDatos.dll
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\bin\Debug\CapaEntidad.dll
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\bin\Debug\CapaNegocio.dll
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\bin\Debug\itextsharp.dll
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\bin\Debug\itextsharp.xmlworker.dll
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\bin\Debug\CapaDatos.pdb
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\bin\Debug\CapaEntidad.pdb
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\bin\Debug\CapaNegocio.pdb
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\bin\Debug\itextsharp.xml
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\obj\Debug\CapaPresentación.csproj.AssemblyReference.cache
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\obj\Debug\Sistema_de_cobros.DatosEstudiantes.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\obj\Debug\Sistema_de_cobros.Sistema_de_Cobros.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\obj\Debug\CapaPresentación.Inscripciones.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\obj\Debug\Sistema_de_cobros.Login.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\obj\Debug\Sistema_de_cobros.RegistroPagos.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\obj\Debug\Sistema_de_cobros.Properties.Resources.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\obj\Debug\Sistema_de_cobros.Registros.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\obj\Debug\Sistema_de_cobros.RegisUni.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\obj\Debug\Sistema_de_cobros.Uniformesdgv.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\obj\Debug\CapaPresentación.csproj.GenerateResource.cache
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\obj\Debug\CapaPresentación.csproj.CoreCompileInputs.cache
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\obj\Debug\Sistema de cobros.exe.manifest
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\obj\Debug\Sistema de cobros.application
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\obj\Debug\CapaPres.314295FC.Up2Date
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\obj\Debug\Sistema de cobros.exe
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\obj\Debug\Sistema de cobros.pdb
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\obj\Debug\Sistema_de_cobros.CorteD.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\obj\Debug\Sistema_de_cobros.FuncionesADMIN.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\Sistema de cobros\obj\Debug\Sistema_de_cobros.Usuarios.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\bin\Debug\Sistema de cobros.exe.config
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\bin\Debug\Sistema de cobros.exe.manifest
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\bin\Debug\Sistema de cobros.application
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\bin\Debug\Sistema de cobros.exe
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\bin\Debug\Sistema de cobros.pdb
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\bin\Debug\CapaDatos.dll
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\bin\Debug\CapaEntidad.dll
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\bin\Debug\CapaNegocio.dll
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\bin\Debug\itextsharp.dll
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\bin\Debug\itextsharp.xmlworker.dll
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\bin\Debug\CapaDatos.pdb
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\bin\Debug\CapaEntidad.pdb
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\bin\Debug\CapaNegocio.pdb
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\bin\Debug\itextsharp.xml
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\obj\Debug\CapaPresentación.csproj.AssemblyReference.cache
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\obj\Debug\Sistema_de_cobros.CorteD.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\obj\Debug\Sistema_de_cobros.DatosEstudiantes.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\obj\Debug\Sistema_de_cobros.FuncionesADMIN.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\obj\Debug\Sistema_de_cobros.Sistema_de_Cobros.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\obj\Debug\CapaPresentación.Inscripciones.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\obj\Debug\Sistema_de_cobros.Login.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\obj\Debug\Sistema_de_cobros.RegistroPagos.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\obj\Debug\Sistema_de_cobros.Properties.Resources.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\obj\Debug\Sistema_de_cobros.Registros.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\obj\Debug\Sistema_de_cobros.RegisUni.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\obj\Debug\Sistema_de_cobros.Uniformesdgv.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\obj\Debug\Sistema_de_cobros.Usuarios.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\obj\Debug\CapaPresentación.csproj.GenerateResource.cache
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\obj\Debug\CapaPresentación.csproj.CoreCompileInputs.cache
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\obj\Debug\Sistema de cobros.exe.manifest
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\obj\Debug\Sistema de cobros.application
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\obj\Debug\CapaPres.314295FC.Up2Date
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\obj\Debug\Sistema de cobros.exe
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\obj\Debug\Sistema de cobros.pdb
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\obj\Debug\Sistema_de_cobros.Estudiantes_Viejos.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\obj\Debug\Sistema_de_cobros.Datos_Estudiantes_Viejos.resources
