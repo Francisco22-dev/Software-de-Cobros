@@ -1,162 +1,89 @@
-
-CREATE DATABASE SISTEMA_COBROS2
-GO
-
-USE SISTEMA_COBROS2
-
-GO
-
-create table rol(
-idrol int primary key identity,
-descripcion varchar(50)
-)
+use SISTEMA_COBROS2
 
 go
 
-create table Concepto(
-idConcepto int primary key identity,
-Descripcion varchar(50)
-)
-go
-
-create table Horarios(
-idHorario int primary key identity,
-Hora varchar(50)
-)
-go
-
-create table Tipos(
-idTipos int primary key identity,
-Tipo varchar(50)
-)
-go
-
-create table Dias(
-idDias int primary key identity,
-Dia varchar(50)
-)
-go
-
-create table permiso(
-idpermiso int primary key identity,
-idrol int references rol(idrol),
-NombreMenu varchar(100)
-)
-
-go
-
-create table Estudiantes(
-idEstudiantes int primary key identity,
-NombreCompleto varchar (50),
-Cedula varchar(50),
-Correo varchar(50),
-Telefono varchar(50),
-)
-
-go
-
-
-create table Usuario(
-idUsuario int primary key identity,
-idrol int references rol(idrol),
-NombreCompleto varchar (50),
-Clave varchar(50)
-)
-
-go
-
-create table Cursos(
-idCursos int primary key identity,
-NombreCurso varchar (50),
-duracionCurso int
-)
-
-go
-
-create table Pagos(
-idPagos int primary key identity,
-idEstudiantes int references Estudiantes(idEstudiantes),
-idCursos int references Cursos(idCursos),
-NombreCompleto varchar (50),
-Cedula varchar(50),
-MontoTotal decimal(10,2),
-fecharegistro datetime default getdate(),
-Estado bit,
-idUsuario int references Usuario(idUsuario),
-Referencia varchar(50),
-idTipos int references Tipos(idTipos),
-Bancos varchar(50),
-idConcepto int,
-idDias int,
-idHorario int
-)
-
-go
-
-create table Estado_de_Cuenta(
-idEstudiantes int,
-idConcepto int references Concepto(idConcepto),
-idCursos int references Cursos(idCursos),
-idHorario int references Horarios(idHorario),
-idDias int references Dias(idDias),
-MontoTotal varchar(50),
-idTipos int references Tipos(idTipos),
-Banco varchar(50),
-Referencia varchar(50),
-FechaInicio date,
-FechaFin date,
-Estado bit,
-NumeroClase int,
-idEstado int primary key identity
-)
-go
-
-create table Camisa(
-idTipoCam int primary key identity,
-Talla varchar (10)
-)
-
-go
-
-create table Pantalon(
-idTipoPan int primary key identity,
-Talla varchar (10)
-)
-
-go
-
-create table Uniformes(
-idEstudiante int,
-idTipoCam int,
-idTipoPan int,
-idCursos int,
-idConcepto int,
-MontoTotal varchar(50),
-idTipos int,
-Banco varchar(50),
-Referencia varchar(50),
-NumeroAbono int,
-FechaPago date,
+alter table Usuario
+add NroDocumento varchar(50),
 Estado bit
-)
 go
 
-create table Contador(
-contador int
-)
+alter table Estado_de_Cuenta
+add NroRecibo int
 go
 
-create table Contador1(
-contador int
-)
+alter table Uniformes
+add NroRecibo int
 go
 
-create table Contador2(
-contador int
-)
+update Usuario
+set NroDocumento='1',
+Nombrecompleto = 'Director',
+Estado = 1
+where idUsuario = 1
 go
 
-/*Procedimientos almacenados*/
+insert into rol(descripcion)values ('EMPLEADO')
+go
+
+insert into rol(descripcion)values ('PROGRAMADOR')
+go
+
+insert into Usuario (idrol, NombreCompleto, Clave, NroDocumento, Estado) values
+(2, 'SECRETARIA', '', '3', 1)
+go
+
+insert into Usuario (idrol, NombreCompleto, Clave, NroDocumento, Estado) values
+(3, 'FRANCISCO', 'Fjst2211@$', '31581403', 1)
+go
+
+insert into permiso (idrol, NombreMenu) values
+
+(1, 'Inscripciones'),
+(1, 'Pagos'),
+(1, 'Uniformes'),
+(1, 'Registros'),
+(1, 'Corte'),
+(1, 'Funciones'),
+(1, 'Usuarios')
+go
+
+insert into permiso (idrol, NombreMenu) values
+
+(3, 'Inscripciones'),
+(3, 'Pagos'),
+(3, 'Uniformes'),
+(3, 'Registros'),
+(3, 'Corte'),
+(3, 'Funciones'),
+(3, 'Usuarios')
+go
+
+insert into permiso (idrol, NombreMenu) values
+
+(2, 'Inscripciones'),
+(2, 'Pagos'),
+(2, 'Uniformes'),
+(2, 'Corte')
+go
+
+create procedure Permisos(
+@idUsuario int
+)as
+begin
+select p.idrol,p.NombreMenu from permiso p
+inner join rol r on r.idrol = p.idrol
+inner join Usuario u on u.idrol = r.idrol
+where idUsuario = @idUsuario
+
+end
+
+go
+
+drop procedure sp_Inscripciones	
+go
+
+drop type [Inscripciones_nuevas]
+go
 
 create type [dbo].[Inscripciones_nuevas] as table(
 	/*[idEstudiantes] int null,*/
@@ -172,13 +99,12 @@ create type [dbo].[Inscripciones_nuevas] as table(
 	[idTipos] int null,
 	[Referencia] varchar(50) null,
 	[Bancos] varchar(50) null,
-	[idConcepto] int null
+	[idConcepto] int null,
+	[Recibo] int null
 )
 go
 
-
-/* */
-CREATE PROCEDURE sp_Inscripciones(
+create PROCEDURE sp_Inscripciones(
     @NombreCompleto  VARCHAR(50),
     @Cedula          VARCHAR(50),
     @Telefono        VARCHAR(50),
@@ -192,6 +118,7 @@ CREATE PROCEDURE sp_Inscripciones(
     @Referencia      VARCHAR(50),
     @Bancos          VARCHAR(50),
     @idConcepto      INT,
+	@Recibo int,
     @Inscripcion     [Inscripciones_nuevas] READONLY,  -- Otros datos adicionales si se requieren
     @Resultado       BIT OUTPUT,
     @Mensaje         VARCHAR(500) OUTPUT
@@ -199,6 +126,8 @@ CREATE PROCEDURE sp_Inscripciones(
 AS
 BEGIN
     BEGIN TRY
+			select top 1 @Recibo = contador
+			from Contador;
         -- Declaración de variables necesarias
         DECLARE @idEstudiante    INT = 0,
                 @duracionCurso   INT,
@@ -209,6 +138,22 @@ BEGIN
         SET @Mensaje = '';
 
         BEGIN TRANSACTION registro;
+			
+			IF NOT (@Bancos = '' AND @Referencia = '')
+			BEGIN
+				IF EXISTS (
+					SELECT 1 
+					FROM Estado_de_Cuenta      
+					WHERE Referencia = @Referencia
+					  AND Banco = @Bancos
+				)
+				BEGIN
+					ROLLBACK TRANSACTION;
+					SET @Resultado = 0;
+					SET @Mensaje = 'La referencia está repetida.';
+					RETURN;
+				END;
+			END;
 
             -------------------------
             -- 1. Registro del estudiante
@@ -268,21 +213,23 @@ BEGIN
                         idTipos,
                         Referencia,
                         Banco,
-                        idConcepto
+                        idConcepto,
+						NroRecibo
                     )
                     VALUES (
                         @idEstudiante,
                         @idCursos,
                         0,
                         @fechacreacion,
-                        CAST(@Montoini AS DECIMAL(18,2)),
+                        @Montoini,
                         1,       -- Estado Solvente (Inscripción)
                         @idDias,
                         @idHorario,
                         @idTipos,
                         @Referencia,
                         @Bancos,
-                        @idConcepto
+                        @idConcepto,
+						@Recibo
                     );
                 END
                 ELSE
@@ -298,7 +245,8 @@ BEGIN
                         idTipos,
                         Referencia,
                         Banco,
-                        idConcepto
+                        idConcepto,
+						NroRecibo
                     )
                     VALUES (
                         @idEstudiante,
@@ -311,7 +259,8 @@ BEGIN
                         @idTipos,
                         @Referencia,
                         @Bancos,
-                        @idConcepto
+                        @idConcepto,
+						null
                     );
                 END;
 
@@ -329,7 +278,21 @@ BEGIN
 END;
 GO
 
+update Concepto
+set Descripcion = 'Pago Quincenal' where idConcepto = 3
+go
 
+update Concepto
+set Descripcion = 'Pago Mensual' where idConcepto = 4
+go
+
+insert into Concepto (Descripcion) values ('Pago de uniforme')
+go
+
+drop procedure sp_RegistroPagos
+
+drop type [Registro de Pagos]
+go
 
 create type [dbo].[Registro de Pagos] as table(
 	[NombreCompleto] varchar(50) null,
@@ -343,12 +306,12 @@ create type [dbo].[Registro de Pagos] as table(
 	[Referencia] varchar(50) null,
 	[Bancos] varchar(50) null,
 	[idConcepto] int null,
-	[NumeroClase] int null
+	[NumeroClase] int null,
+	[Recibo] int null
 )
 go
 
-
-CREATE PROCEDURE sp_RegistroPagos
+create PROCEDURE sp_RegistroPagos
 (
     @NombreCompleto  VARCHAR(50),
     @Cedula          VARCHAR(50),
@@ -362,6 +325,7 @@ CREATE PROCEDURE sp_RegistroPagos
     @Bancos          VARCHAR(50),
     @idConcepto      INT,
     @NumeroClase     VARCHAR(10),
+	@Recibo int,
     @Pago            dbo.[Registro de Pagos] READONLY,  
     @Resultado       BIT OUTPUT,
     @Mensaje         VARCHAR(500) OUTPUT
@@ -371,6 +335,8 @@ BEGIN
     SET NOCOUNT ON;
 
     BEGIN TRY
+			select top 1 @Recibo = contador
+			from Contador;
         BEGIN TRANSACTION;
 		DECLARE @IdEstudianteFound INT;
         SELECT @IdEstudianteFound = E.idEstudiantes
@@ -385,9 +351,27 @@ BEGIN
         BEGIN
             ROLLBACK TRANSACTION;
             SET @Resultado = 0;
-            SET @Mensaje = 'El estudiante que usted ha escrito no existe en el curso, el horario o el día que usted seleccionó, por favor verifique la cédula y el nombre o alguno de los datos anteriores.';
+            SET @Mensaje = 'El estudiante que usted ha escrito no existe en el curso que usted seleccionó, por favor verifique nuevamente la Cédula y el Nombre.';
             RETURN;
         END;
+
+		IF NOT (@Bancos = '' AND @Referencia = '')
+		BEGIN
+			IF EXISTS (
+				SELECT 1 
+				FROM Estado_de_Cuenta
+				WHERE Referencia = @Referencia
+				  AND Banco = @Bancos
+			)
+			BEGIN
+				ROLLBACK TRANSACTION;
+				SET @Resultado = 0;
+				SET @Mensaje = 'La referencia está repetida.';
+				RETURN;
+			END;
+		END;
+
+
 		 IF (CONVERT(INT, @NumeroClase) = 1)
 		begin
 
@@ -443,7 +427,8 @@ BEGIN
 			  AND CONVERT(INT, NumeroClase) between 2 and @totalCuotas;
 
 			UPDATE Estado_de_Cuenta
-			SET FechaInicio = @fechacreacion
+			SET FechaInicio = @fechacreacion,
+			NroRecibo = @Recibo
 			WHERE idEstudiantes = @IdEstudianteFound
 			  AND CONVERT(INT, NumeroClase) = 1;
 
@@ -453,7 +438,7 @@ BEGIN
 			  AND CONVERT(INT, NumeroClase) between 1 and @totalCuotas;
 		END
 
-		ELSE IF (@idConcepto = 3)
+		ELSE IF (@idConcepto = 4)
 		BEGIN
 			UPDATE Estado_de_Cuenta
 			SET 
@@ -478,7 +463,8 @@ BEGIN
 			  AND CONVERT(INT, NumeroClase) between 1 and @totalCuotas;
 
 			UPDATE Estado_de_Cuenta
-			SET MontoTotal = @MontoTotal
+			SET MontoTotal = @MontoTotal,
+			NroRecibo = @Recibo
 			WHERE idEstudiantes = @IdEstudianteFound
 			  AND CONVERT(INT, NumeroClase) BETWEEN 1 AND 4;
 
@@ -487,6 +473,41 @@ BEGIN
 			WHERE idEstudiantes = @IdEstudianteFound
 			  AND CONVERT(INT, NumeroClase) BETWEEN 1 AND 4;
 		END
+		else if (@idConcepto = 3)
+		begin
+		update Estado_de_Cuenta
+		set 
+			 Estado     = 1,  -- Se marca como pagadas (o activas)
+				 idDias     = @idDias,
+				 Referencia = @Referencia,
+				 Banco      = @Bancos,
+				 idConcepto = @idConcepto,
+				 idTipos    = @idTipos
+				 -- Tampoco se actualiza FechaInicio, para mantener el valor original.
+			WHERE idEstudiantes = @IdEstudianteFound
+			  AND CONVERT(INT, NumeroClase) BETWEEN 1 AND 2;
+
+			UPDATE Estado_de_Cuenta
+			SET Estado = 0
+			WHERE idEstudiantes = @IdEstudianteFound
+			  AND CONVERT(INT, NumeroClase) between 3 and @totalCuotas;
+
+			UPDATE Estado_de_Cuenta
+			SET FechaFin = DATEADD(DAY, (CONVERT(INT, NumeroClase)* 7), @fechacreacion)
+			WHERE idEstudiantes = @IdEstudianteFound
+			  AND CONVERT(INT, NumeroClase) between 1 and @totalCuotas;
+
+			UPDATE Estado_de_Cuenta
+			SET MontoTotal = @MontoTotal,
+			NroRecibo = @Recibo
+			WHERE idEstudiantes = @IdEstudianteFound
+			  AND CONVERT(INT, NumeroClase) BETWEEN 1 AND 2;
+
+			UPDATE Estado_de_Cuenta
+			SET FechaInicio = @fechacreacion
+			WHERE idEstudiantes = @IdEstudianteFound
+			  AND CONVERT(INT, NumeroClase) BETWEEN 1 AND 2;
+		end
 	end
     ELSE
         BEGIN
@@ -513,7 +534,23 @@ BEGIN
                     RETURN;
                 END;
             END
-            ELSE IF (@idConcepto = 3)
+			else if (@idConcepto = 3)
+			begin
+				update Estado_de_Cuenta
+				set 
+					MontoTotal = @MontoTotal,
+                    idDias = @idDias,
+                    FechaInicio = @fechacreacion,
+                    Referencia = @Referencia,
+                    Banco = @Bancos,
+                    Estado = 1,
+                    idConcepto = @idConcepto,
+                    idTipos = @idTipos,
+					NroRecibo = @Recibo
+                WHERE idEstudiantes = @IdEstudianteFound
+                  AND CONVERT(INT, NumeroClase) BETWEEN CONVERT(INT, @NumeroClase) AND (CONVERT(INT, @NumeroClase) + 1);
+			end
+            ELSE IF (@idConcepto = 4)
             BEGIN
                 UPDATE Estado_de_Cuenta
                 SET 
@@ -524,7 +561,8 @@ BEGIN
                     Banco = @Bancos,
                     Estado = 1,
                     idConcepto = @idConcepto,
-                    idTipos = @idTipos
+                    idTipos = @idTipos,
+					NroRecibo = @Recibo
                 WHERE idEstudiantes = @IdEstudianteFound
                   AND CONVERT(INT, NumeroClase) BETWEEN CONVERT(INT, @NumeroClase) AND (CONVERT(INT, @NumeroClase) + 3);
 
@@ -536,7 +574,7 @@ BEGIN
                     RETURN;
                 END;
             END
-            ELSE IF (@idConcepto = 4)
+            ELSE IF (@idConcepto = 5)
             BEGIN
                 UPDATE Uniformes
                 SET 
@@ -545,7 +583,8 @@ BEGIN
                     Banco = @Bancos,
                     Estado = 1,
                     idConcepto = @idConcepto,
-                    idTipos = @idTipos
+                    idTipos = @idTipos,
+					NroRecibo = @Recibo
                 WHERE NumeroAbono = @NumeroClase
                   AND idEstudiante = @IdEstudianteFound;
 
@@ -559,7 +598,7 @@ BEGIN
             END;
         END;
 
-        IF (@idConcepto IN (2,3))
+        IF (@idConcepto IN (2,3,4))
         BEGIN
             INSERT INTO Pagos (idCursos, NombreCompleto, Cedula, idConcepto, idHorario, idDias, idTipos, Bancos, Referencia)
             VALUES (@idCursos, @NombreCompleto, @Cedula, @idConcepto, @idHorario, @idDias, @idTipos, @Bancos, @Referencia);
@@ -580,7 +619,7 @@ BEGIN
 END;
 GO
 
-CREATE PROCEDURE sp_UniformesRegis 
+alter PROCEDURE sp_UniformesRegis 
 (
     @NombreCompleto varchar(50),
     @Cedula        varchar(50),
@@ -593,12 +632,15 @@ CREATE PROCEDURE sp_UniformesRegis
     @Referencia    varchar(50),
     @FechaPago     date,
     @idConcepto    int,
+	@Recibo int,
     @Resultado     BIT OUTPUT,
     @Mensaje       VARCHAR(500) OUTPUT
 )
 AS
 BEGIN
     BEGIN TRY
+			select top 1 @Recibo = contador
+			from Contador;
         BEGIN TRANSACTION RegisUni;
         
 		DECLARE @IdEstudianteFound INT;
@@ -615,6 +657,22 @@ BEGIN
                 ROLLBACK TRANSACTION RegisUni;
                 RETURN;
             END
+			IF NOT (@Banco = '' AND @Referencia = '')
+			BEGIN
+				IF EXISTS (
+					SELECT 1 
+					FROM Estado_de_Cuenta      
+					WHERE Referencia = @Referencia
+					  AND Banco = @Banco
+				)
+				BEGIN
+					ROLLBACK TRANSACTION;
+					SET @Resultado = 0;
+					SET @Mensaje = 'La referencia está repetida.';
+					RETURN;
+				END;
+			END;
+
 
             -- Inserta 5 registros usando una tabla derivada que genera 5 filas
             INSERT INTO Uniformes 
@@ -630,14 +688,15 @@ BEGIN
                 Banco,
                 idConcepto,
 				idTipoCam,
-				idTipoPan
+				idTipoPan,
+				NroRecibo
             )
             SELECT 
                 @IdEstudianteFound, 
                 @idCursos, 
                 NumeroAbono,                           -- Numeración de abono (1 a 5)
                 @FechaPago, 
-                CAST(ISNULL(@MontoTotal, '0') AS DECIMAL(18,2)), 
+                @MontoTotal,
                 CASE 
                     WHEN NumeroAbono = 1 THEN 1   -- La primera fila con Estado = 1
                     ELSE 0                      -- Las siguientes con Estado = 0
@@ -647,7 +706,8 @@ BEGIN
                 @Banco, 
                 @idConcepto,
 				@idTipoCam,
-				@idTipoPan
+				@idTipoPan,
+				@Recibo
             FROM 
             (
                 SELECT 1 AS NumeroAbono
@@ -675,7 +735,187 @@ BEGIN
 END
 GO
 
-create procedure sp_ReportedeEstudiantes(
+create procedure sp_Corte(
+@fechaHoy date
+)as
+begin
+ SET DATEFORMAT dmy;  
+
+   select
+	convert(Char(10), ES.FechaInicio,103)[FechaRegistro], E.Cedula, E.NombreCompleto[NombreCompleto], C.NombreCurso[Curso], 
+	H.Hora[Horario], D.Dia[Día], ES.MontoTotal[MontoTotal], T.Tipo[TipoPago], CO.Descripcion[Concepto],
+	ES.Banco, ES.Referencia, ES.Estado, Es.NumeroClase, ES.NroRecibo[Recibo], CONVERT(CHAR(10), ES.FechaFin, 103)[FechaVencimiento]
+	from Estado_de_Cuenta ES
+	inner join Estudiantes E on E.idEstudiantes = ES.idEstudiantes
+	inner join Concepto CO on CO.idConcepto = ES.idConcepto
+	inner join Cursos C on C.idCursos = ES.idCursos
+	inner join Horarios H on H.idHorario = ES.idHorario
+	inner join Dias D on D.idDias = ES.idDias
+	inner join Tipos T on T.idTipos = ES.idTipos
+	WHERE ES.FechaInicio = @fechaHoy
+END
+GO
+
+create procedure sp_ReportedeUniformesC(
+@fechaHoy date
+)
+as
+begin
+	set dateformat dmy;  
+
+	select
+	E.idestudiantes, convert(Char(10), Uni.FechaPago,103)[FechaRegistro], E.Cedula, E.NombreCompleto[NombreCompleto], C.NombreCurso[Curso],
+	Uni.MontoTotal[MontoTotal], T.Tipo[TipoPago], CO.Descripcion[Concepto],
+	Uni.Banco, Uni.Referencia, Uni.NroRecibo[Recibo], Uni.Estado
+	from Uniformes Uni
+	inner join Estudiantes E on E.idEstudiantes = Uni.idEstudiante
+	inner join Concepto CO on CO.idConcepto = Uni.idConcepto
+	inner join Cursos C on C.idCursos = Uni.idCursos
+	inner join Tipos T on T.idTipos = Uni.idTipos
+	where Uni.Estado = 1 and Uni.FechaPago = @fechaHoy
+end
+go
+
+create procedure sp_AGCurso(
+@NombreCurso varchar(50),
+@duracionCurso int,
+@Resultado     BIT OUTPUT,
+@Mensaje       VARCHAR(500) OUTPUT
+)as
+begin
+	BEGIN TRY
+        BEGIN TRANSACTION 
+            INSERT INTO Cursos 
+            (
+                NombreCurso,
+				duracionCurso
+            )
+            values
+			(
+				@NombreCurso,
+				@duracionCurso
+			)
+
+        COMMIT TRANSACTION
+
+        SET @Resultado = 1;
+        SET @Mensaje = 'Curso registrado correctamente.';
+    END TRY
+    BEGIN CATCH
+        IF XACT_STATE() <> 0
+            ROLLBACK TRANSACTION 
+        SET @Resultado = 0;
+        SET @Mensaje = ERROR_MESSAGE();
+    END CATCH
+END
+go
+
+create procedure sp_RegistrarUsuario(
+@NombreCompleto varchar(50),
+@Documento varchar(50),
+@Clave varchar(50),
+@idrol int,
+@Estado bit,
+@idResultado int output,
+@Mensaje varchar(500) output
+)as
+begin
+	begin try
+	begin transaction
+	set @idResultado = 0;
+	set @Mensaje = '';
+
+	if not exists (select * from Usuario where NroDocumento = @Documento)
+	begin
+		insert into Usuario (NombreCompleto, NroDocumento, Clave, idrol, Estado)
+		values (@NombreCompleto, @Documento, @Clave, @idrol, @Estado)
+
+		set @idResultado = SCOPE_IDENTITY()
+	end
+	else
+		set @Mensaje = 'No se puede repetir la cédula para más de un usuario'
+	commit transaction
+		SET @idResultado = 1;
+        SET @Mensaje = 'Usuario registrado exitosamente.';
+    END TRY
+    BEGIN CATCH
+        IF XACT_STATE() <> 0
+            ROLLBACK TRANSACTION 
+        SET @idResultado = 0;
+        SET @Mensaje = ERROR_MESSAGE();
+    END CATCH
+END
+go
+
+create procedure sp_EditarUsuario(
+@idUsuario int,
+@NombreCompleto varchar(50),
+@Documento varchar(50),
+@Clave varchar(50),
+@idrol int,
+@Estado bit,
+@Resultado bit output,
+@Mensaje varchar(500) output
+)as
+begin
+ begin try
+ begin transaction
+	set @Resultado = 0;
+	set @Mensaje = '';
+
+	if not exists (select * from Usuario where NroDocumento = @Documento and idUsuario != @idUsuario)
+	begin
+		update Usuario set 
+		NombreCompleto = @NombreCompleto,
+		NroDocumento = @Documento,
+		Clave = @Clave, 
+		idrol = @idrol,
+		Estado = @Estado
+		where idUsuario = @idUsuario
+
+		set @Resultado = SCOPE_IDENTITY()
+	end
+	else
+		set @Mensaje = 'No se puede repetir la cédula para más de un usuario.'
+	commit transaction
+		SET @Resultado = 1;
+        SET @Mensaje = 'Usuario editado.';
+    END TRY
+    BEGIN CATCH
+        IF XACT_STATE() <> 0
+            ROLLBACK TRANSACTION 
+        SET @Resultado = 0;
+        SET @Mensaje = ERROR_MESSAGE();
+    END CATCH
+END
+go
+
+create procedure sp_EliminarUsuario(
+@idUsuario int,
+@Resultado bit output,
+@Mensaje varchar(500) output
+)as
+begin
+	begin try
+	begin transaction
+	set @Resultado = 0;
+	set @Mensaje = '';
+
+	delete from Usuario where idUsuario = @idUsuario
+	commit transaction
+		SET @Resultado = 1;
+        SET @Mensaje = 'Usuario eliminado.';
+    END TRY
+    BEGIN CATCH
+        IF XACT_STATE() <> 0
+            ROLLBACK TRANSACTION 
+        SET @Resultado = 0;
+        SET @Mensaje = ERROR_MESSAGE();
+    END CATCH
+END
+go
+
+alter procedure sp_ReportedeEstudiantes(
 @FechaInicio date,
 @FechaFin date,
 @idCurso int
@@ -687,7 +927,7 @@ begin
 	select
 	convert(Char(10), ES.FechaInicio,103)[FechaRegistro], E.Cedula, E.NombreCompleto[NombreCompleto], C.NombreCurso[Curso], 
 	H.Hora[Horario], D.Dia[Día], ES.MontoTotal[MontoTotal], T.Tipo[TipoPago], CO.Descripcion[Concepto],
-	ES.Banco, ES.Referencia, ES.Estado, Es.NumeroClase, CONVERT(CHAR(10), ES.FechaFin, 103)[FechaVencimiento]
+	ES.Banco, ES.Referencia, ES.Estado, Es.NumeroClase, ES.NroRecibo[Recibo], CONVERT(CHAR(10), ES.FechaFin, 103)[FechaVencimiento]
 	from Estado_de_Cuenta ES
 	inner join Estudiantes E on E.idEstudiantes = ES.idEstudiantes
 	inner join Concepto CO on CO.idConcepto = ES.idConcepto
@@ -701,7 +941,7 @@ begin
 end
 go
 
-CREATE PROCEDURE sp_ReportedeEstudiantesPendientesHoy(
+alter PROCEDURE sp_ReportedeEstudiantesPendientesHoy(
 @FechaHoy DATE,
 @idCurso INT
 )AS
@@ -711,7 +951,7 @@ BEGIN
    select
 	convert(Char(10), ES.FechaInicio,103)[FechaRegistro], E.Cedula, E.NombreCompleto[NombreCompleto], C.NombreCurso[Curso], 
 	H.Hora[Horario], D.Dia[Día], ES.MontoTotal[MontoTotal], T.Tipo[TipoPago], CO.Descripcion[Concepto],
-	ES.Banco, ES.Referencia, ES.Estado, Es.NumeroClase, CONVERT(CHAR(10), ES.FechaFin, 103)[FechaVencimiento]
+	ES.Banco, ES.Referencia, ES.Estado, Es.NumeroClase, ES.NroRecibo[Recibo], CONVERT(CHAR(10), ES.FechaFin, 103)[FechaVencimiento]
 	from Estado_de_Cuenta ES
 	inner join Estudiantes E on E.idEstudiantes = ES.idEstudiantes
 	inner join Concepto CO on CO.idConcepto = ES.idConcepto
@@ -724,40 +964,7 @@ BEGIN
 END
 GO
 
-create procedure sp_Estudiante
-as
-begin
-	select 
-	E.idEstudiantes, E.Cedula, E.NombreCompleto[NombreCompleto], E.Correo, E.Telefono
-	from Estudiantes E
-
-end
-go
-
-
-create procedure sp_Eliminar(
-@idEstudiantes int
-)
-as 
-begin
-	delete from Estudiantes where idEstudiantes = @idEstudiantes
-	delete from Estado_de_Cuenta where idEstudiantes = @idEstudiantes
-
-end
-go
-
-create procedure sp_Eliminar2(
-@idEstudiantes int
-)
-as 
-begin
-	delete from Uniformes where idEstudiante = @idEstudiantes
-
-end
-go
-
-
-create procedure sp_ReportedeUniformes
+alter procedure sp_ReportedeUniformes
 as
 begin
 	set dateformat dmy;  
@@ -765,7 +972,7 @@ begin
 	select
 	E.idestudiantes, convert(Char(10), Uni.FechaPago,103)[FechaRegistro], E.Cedula, E.NombreCompleto[NombreCompleto], C.NombreCurso[Curso],
 	Uni.MontoTotal[MontoTotal], T.Tipo[TipoPago], CO.Descripcion[Concepto],
-	Uni.Banco, Uni.Referencia, Uni.Estado
+	Uni.Banco, Uni.Referencia, Uni.NroRecibo[Recibo], Uni.Estado
 	from Uniformes Uni
 	inner join Estudiantes E on E.idEstudiantes = Uni.idEstudiante
 	inner join Concepto CO on CO.idConcepto = Uni.idConcepto
@@ -775,87 +982,47 @@ begin
 end
 go
 
-/*Datos Base*/
-
-insert into rol (descripcion)
-values ('ADMINISTRADOR')
+update Cursos set NombreCurso = 'Enfermeria' where idCursos = 2
 go
 
-insert into Usuario(idrol, NombreCompleto, Clave)
-values(1, 'CEVENCA', 'oKgd73Hm42')
+update Cursos set NombreCurso = 'Odontologia' where idCursos = 3
 go
 
-insert into Camisa(Talla)
-values
-
-('S'),
-('M'),
-('L'),
-('XL'),
-('2XL')
+update Cursos set NombreCurso = 'Refrigeracion' where idCursos = 6
 go
 
-insert into Pantalon(Talla)
-values
-
-('S'),
-('M'),
-('L'),
-('XL'),
-('2XL')
+update Dias set Dia = 'Miercoles' where idDias = 3
 go
 
-insert into Concepto(Descripcion)values
-
-('Inscripción'),
-('Pago Semanal'),
-('Pago Mensual'),
-('Uniforme')
+update Dias set Dia = 'Sabado' where idDias = 3
 go
 
-insert into Contador(contador)values (1)
+update Tipos set Tipo = 'Bolivares en efectivo' where idTipos = 2
 go
 
-insert into Contador1(contador)values (1)
+update Tipos set Tipo = 'Deposito' where idTipos = 4
 go
 
-insert into Contador2(contador)values (1)
+update Tipos set Tipo = 'Pago movil' where idTipos = 5
 go
 
-insert into Cursos(NombreCurso, duracionCurso)values
+CREATE TABLE Licencias
+(
+    IdLicencia INT IDENTITY(1,1) PRIMARY KEY,
+    Codigo NVARCHAR(100) NOT NULL,
+    FechaUltimoDesbloqueo DATETIME NOT NULL,
+    Estado BIT NOT NULL DEFAULT 1  -- 1: Activo, 0: Inactivo (opcional)
+);
+go 
 
-('Laboratorio', 6),
-('Enfermería', 6),
-('Odontología', 6),
-('Fisioterapia', 6),
-('Farmacia', 6),
-('Refrigeración', 3),
-('Marketing Digital', 3),
-('Masoterapia', 3)
+insert into Licencias(Codigo, FechaUltimoDesbloqueo, Estado) values('2211500231403581', getdate(), 1)
 go
-
-insert into Dias(Dia)values
-
-('Lunes'),
-('Martes'),
-('Miércoles'),
-('Jueves'),
-('Viernes'),
-('Sábado')
-go
-
-insert into Tipos(Tipo)values
-
-('Divisa'),
-('Bolívares en efectivo'),
-('Transferencia'),
-('Depósito'),
-('Pago móvil')
-go
-
-insert into Horarios(Hora)values
-
-('8 am a 11 am'),
-('11 am a 2 pm'),
-('2 pm a 5 pm')
-go
+select * from Licencias
+create procedure ObtenerUsuario(
+@Mensaje varchar(500) output
+)
+as 
+begin 
+	SELECT u.idUsuario,u.NroDocumento,u.NombreCompleto,u.Clave,u.Estado,r.idrol,r.descripcion from Usuario u 
+	inner join rol r on r.idrol = u.idrol
+end

@@ -1,96 +1,136 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Recibo</title>
-    <style>
-        table.border {
-            border-collapse: collapse;
-        }
-
-            table.border th {
-                padding: 5px;
-                border: 1px solid black;
-            }
-
-            table.border td {
-                padding: 5px;
-                border: 1px solid black;
-            }
-    </style>
+  <meta charset="UTF-8">
+  <title>Recibo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 15px 20px;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
+    /* Encabezado */
+    .header {
+      text-align: center;
+      border-bottom: 2px solid #333;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+    .header h4 {
+      margin: 0;
+      font-size: 22px;
+    }
+    .header p {
+      margin: 2px 0;
+      font-size: 12px;
+      line-height: 1.3;
+    }
+    /* Información del recibo */
+    .recibo-info {
+      text-align: right;
+      font-weight: bold;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    /* Datos del cliente */
+    .client-info {
+      margin-bottom: 15px;
+    }
+    .client-info .label {
+      font-size: 13px;
+      font-weight: bold;
+      margin-top: 8px;
+      display: block;
+    }
+    .client-info .value {
+      font-size: 13px;
+      border-bottom: 1px dashed #999;
+      padding-bottom: 3px;
+      margin-bottom: 5px;
+      display: block;
+    }
+    /* Detalle de la factura en formato vertical */
+    .invoice-details {
+      margin-bottom: 15px;
+    }
+    .invoice-item {
+      margin-bottom: 10px;
+      padding: 8px;
+      border: 1px solid #333;
+    }
+    .invoice-item .field {
+      margin-bottom: 4px;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+    .invoice-item .field .label {
+      font-weight: bold;
+    }
+    /* Total */
+    .total {
+      text-align: right;
+      font-size: 14px;
+      font-weight: bold;
+      border-top: 1px solid #333;
+      padding-top: 5px;
+      margin-bottom: 15px;
+    }
+    /* Pie de página */
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+      border-top: 1px solid #ccc;
+      padding-top: 5px;
+    }
+  </style>
 </head>
 <body>
-    <table style="width:100%">
-        <tr>
-            <td style="width:20%"></td>
-            <td style="width:60%" align="center" valign="top">
-                <table>
-                    <tr><td align="center"><h4 style="margin:0px">CEVENCA</h4></td></tr>
-                    <tr><td align="center">Dirección: Av. Las Ferias, C.C. Isora, piso Mezzanina local 07 </td></tr>
-                    <tr>
-                        <td align="center">
-                            Teléfonos: 0414-4281527
- 			    <br>0426-2355934
-                        </td>
-                    </tr>
-                </table>
-            </td>
-            <td style="width:20%">
-                <table class="border" style="width:100%">
-                    <tr><td align="center" style="background-color:#D8D8D8">RECIBO</td></tr>
-                    <tr><td align="center">@Numero</td></tr>
-                </table>
-            </td>
-        </tr>
-
-        <tr><td colspan="3" height="20"></td></tr>
-
-        <tr>
-            <td colspan="2">
-                <table style="width:100%">
-                    <tr>
-                        <td colspan="1" style="width:20%">Estudiante:</td>
-                        <td colspan="3" style="width:80%;border-bottom:1px solid black">@CLIENTE</td>
-                    </tr>
-                </table>
-                <table style="width:100%">
-                    <tr>
-                        <td style="width:20%">Cédula:</td>
-                        <td style="width:30%;border-bottom:1px solid black">@DOCUMENTO</td>
-                        <td style="width:10%">Fecha:</td>
-                        <td style="width:40%;border-bottom:1px solid black">@FECHA</td>
-                    </tr>
-                </table>
-            </td>
-            <td></td>
-        </tr>
-
-        <tr><td colspan="3" height="30"></td></tr>
-
-        <tr>
-            <td colspan="3">
-                <table class="border" style="width:100%;">
-                    <thead>
-                        <tr style="background-color:#D8D8D8">
-                            <th>Curso</th>
-                            <th>Horario</th>
-                            <th>Día de clase</th>
-                            <th>Tipo de pago</th>
-                            <th>Forma de pago</th>
-                            <th>Monto</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!--<tr>
-                            <td>1</td>
-                            <td>sdafsda</td>
-                            <td>2.4</td>
-                            <td>2.4</td>
-                        </tr>-->
-                        @FILAS
-                    </tbody>
-                </table>
-            </td>
-        </tr>
-    </table>
+  <div class="container">
+    <!-- Encabezado de la empresa -->
+    <div class="header">
+      <h4>CEVENCA</h4>
+      <p>Dirección: Av. Las Ferias, C.C. Isora, piso Mezzanina, local 07</p>
+      <p>Teléfonos: 0414-4281527 / 0426-2355934</p>
+    </div>
+    
+    <!-- Información del recibo -->
+    <div class="recibo-info">
+      RECIBO: @Numero
+    </div>
+    
+    <!-- Datos del cliente -->
+    <div class="client-info">
+      <span class="label">Estudiante:</span>
+      <span class="value">@CLIENTE</span>
+      <br />
+      <span class="label">Cédula:</span>
+      <span class="value">@DOCUMENTO</span>
+      <br />
+      <span class="label">Fecha:</span>
+      <span class="value">@FECHA</span>
+    </div>
+    
+    <!-- Detalles verticales de la factura (se inyectará dinámicamente cada detalle y el total) -->
+    <div class="invoice-details">
+      @DETALLES
+    </div>
+    
+    <!-- Pie de página -->
+    <div class="footer">
+      Gracias por su preferencia.<br>
+      Recibo generado por CEVENCA.
+    </div>
+  </div>
 </body>
 </html>
