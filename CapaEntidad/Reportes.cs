@@ -24,5 +24,6 @@ namespace CapaEntidad
         public string NumeroClase { get; set; }
         public string Recibo { get; set; }
         public string FechaVencimiento { get; set; }
+        public int idEstado { get; set; }
     }
 }

@@ -10,3 +10,9 @@ C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajo
 C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
 C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\CapaEntidad\obj\Debug\CapaEntidad.dll
 C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Trabajos pagado de programacion\CapaEntidad\obj\Debug\CapaEntidad.pdb
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\CapaEntidad\bin\Debug\CapaEntidad.dll
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\CapaEntidad\bin\Debug\CapaEntidad.pdb
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\CapaEntidad\obj\Debug\CapaEntidad.dll
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\CapaEntidad\obj\Debug\CapaEntidad.pdb

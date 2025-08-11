@@ -126,7 +126,7 @@ namespace Sistema_de_cobros.Properties {
         ///&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
         ///&lt;head&gt;
         ///  &lt;meta charset=&quot;UTF-8&quot;&gt;
-        ///  &lt;title&gt;Recibo&lt;/title&gt;
+        ///  &lt;title&gt;REPORTE DIARIO&lt;/title&gt;
         ///  &lt;style&gt;
         ///    body {
         ///      font-family: Arial, sans-serif;
@@ -143,8 +143,7 @@ namespace Sistema_de_cobros.Properties {
         ///      border: 1px solid #ccc;
         ///      box-shadow: 0 0 5px rgba(0,0,0,0.2);
         ///    }
-        ///    /* Encabezado */
-        ///    .h [resto de la cadena truncado]&quot;;.
+        ///    /* Encabezado */ [resto de la cadena truncado]&quot;;.
         /// </summary>
         internal static string Plantilla_Reporte {
             get {

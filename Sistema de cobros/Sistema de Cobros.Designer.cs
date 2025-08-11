@@ -45,6 +45,7 @@
             this.Corte = new FontAwesome.Sharp.IconMenuItem();
             this.Funciones = new FontAwesome.Sharp.IconMenuItem();
             this.Logo = new System.Windows.Forms.PictureBox();
+            this.Graficas = new FontAwesome.Sharp.IconMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.SuspendLayout();
@@ -90,6 +91,7 @@
             this.Uniformes,
             this.Registros,
             this.Corte,
+            this.Graficas,
             this.Funciones});
             this.menuStrip1.Location = new System.Drawing.Point(0, 61);
             this.menuStrip1.Name = "menuStrip1";
@@ -258,6 +260,21 @@
             this.Logo.TabIndex = 4;
             this.Logo.TabStop = false;
             // 
+            // Graficas
+            // 
+            this.Graficas.AutoSize = false;
+            this.Graficas.IconChar = FontAwesome.Sharp.IconChar.FileContract;
+            this.Graficas.IconColor = System.Drawing.Color.Black;
+            this.Graficas.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.Graficas.IconSize = 50;
+            this.Graficas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Graficas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.Graficas.Name = "Graficas";
+            this.Graficas.Size = new System.Drawing.Size(80, 69);
+            this.Graficas.Text = "Gráfica";
+            this.Graficas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.Graficas.Click += new System.EventHandler(this.Graficas_Click);
+            // 
             // Sistema_de_Cobros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -299,6 +316,7 @@
         private FontAwesome.Sharp.IconMenuItem Usuarios;
         private System.Windows.Forms.ToolStripMenuItem ingresarEstudiantesViejos;
         private System.Windows.Forms.ToolStripMenuItem datosDeEstudiantesAntiguosToolStripMenuItem;
+        private FontAwesome.Sharp.IconMenuItem Graficas;
     }
 }
 

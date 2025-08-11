@@ -12,7 +12,6 @@ namespace CapaEntidad
         public string NombreCompleto { get; set; }
         public string Cedula { get; set; }
         public CE_Cursos oCursos { get; set; }
-        public string Correo { get; set; }
         public string Telefono { get; set; }
         public DateTime fechacreacion { get; set; }
         public Horarios oHorario { get; set; }
@@ -23,6 +22,8 @@ namespace CapaEntidad
         public string Bancos { get; set; }
         public Concepto oConcepto { get; set; }
         public string Recibo  { get; set; }
+        public bool Pago { get; set; }
+        public string Nota { get; set; }
     }
 }
        

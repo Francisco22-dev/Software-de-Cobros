@@ -20,7 +20,7 @@ using static CapaEntidad.HTML;
 
 namespace Sistema_de_cobros
 {
-    public partial class RegistroPagos: Form
+    public partial class RegistroPagos : Form
     {
         public RegistroPagos()
         {
@@ -107,7 +107,7 @@ namespace Sistema_de_cobros
         {
             if (ValidarTextBox())
             {
-                
+
                 // Verificar que el ComboBox tenga un valor seleccionado
                 if (cboCursos.SelectedValue == null)
                 {
@@ -171,6 +171,8 @@ namespace Sistema_de_cobros
                     Recibo = numeroRecibo
                 };
 
+                // Dentro del constructor o método de inicialización
+
                 bool resultado = new CN_RegistroPagos().RegistrarPago(pago, RegistroPago, out string mensaje);
 
                 if (resultado)
@@ -199,318 +201,338 @@ namespace Sistema_de_cobros
                     row1.Cells["Referencia"].Value = Referencia.Text;
                     row1.Cells["Monto"].Value = Montoini.Text;
 
-                    
-                    if ((Convert.ToInt32(cboFormato.SelectedValue))==5)
-                    {
-                        string factura = "";
-                        factura += "       CEVENCA\n";
-                        factura += "Direccion: Av. Las Ferias, C.C. Isora," + "\npiso Mezzanina, local 07\n";
-                        factura += "Telefonos: 0414-4281527 / 0426-2355934\n\n";
-                        // Si tienes un número de recibo generado dinámicamente, por ejemplo desde 'numeroManager':
-                       
-                        factura += "RECIBO: " + numeroRecibo + "\n\n";
-                        factura += "Estudiante: " + NombresCompletos.Text + "\n";
-                        factura += "Cedula: " + Cedula_ins.Text + "\n";
-                        factura += "Fecha: " + DateTime.Now.ToString("dd/MM/yyyy") + "\n\n";
-                        factura += "Curso: " + cboCursos.Text + "\n";
-                        factura += "Horario: " + Hora.Text + "\n";
-                        factura += "Dia de clase: " + cboDia.Text + "\n";
-                        factura += "Formato de pago: " + cboFormato.Text + "\n";
-                        factura += "Abono que pago: " + txtClase.Text + "\n";
-                        factura += "Tipo de pago: " + cboTipos.Text + "\n\n";
-                        factura += "Total: " + Montoini.Text + "\n\n";
-                        factura += "Gracias por su preferencia.\n";
-                        factura += "Recibo generado por CEVENCA.\n";
+                    // Construye la factura
+                    string factura = ConstruirFactura(
+                        numeroRecibo,
+                        NombresCompletos.Text,
+                        Cedula_ins.Text,
+                        cboCursos.Text,
+                        Hora.Text,
+                        cboDia.Text,
+                        cboFormato.Text,
+                        txtClase.Text,
+                        cboTipos.Text,
+                        Bancotxt.Text,
+                        Referencia.Text,
+                        Montoini.Text
+                    );
 
-                        byte[] initCommandBytes = new byte[] { 0x1B, 0x40 };  // Comando ESC @ (reinicia la impresora)
-                        string initCommand = System.Text.Encoding.ASCII.GetString(initCommandBytes);
-                        byte[] cutCommandBytes = new byte[] { 0x1D, 0x56, 0x41, 0x10 };  // Comando de corte. ¡Verifica que sea el correcto para tu modelo!
-                        string cutCommand = System.Text.Encoding.ASCII.GetString(cutCommandBytes);
-                        factura = initCommand + factura + cutCommand;
-
-                        string printerName = "POS-80"; // Reemplaza este valor por el nombre exacto configurado en Windows.
-                        bool resultadoImpresion = RawPrinterHelper.SendStringToPrinter(printerName, factura);
-                        if (resultadoImpresion)
-                        {
-                            MessageBox.Show("Recibo impreso correctamente.", "Impresión", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Error al imprimir el recibo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    else
-                    {
-                        if (((Convert.ToInt32(cboTipos.SelectedValue)) == 3)|| ((Convert.ToInt32(cboTipos.SelectedValue)) == 4)|| ((Convert.ToInt32(cboTipos.SelectedValue)) == 5) || ((Convert.ToInt32(cboTipos.SelectedValue)) == 7))
-                        {
-                            string factura = "";
-                            factura += "       CEVENCA\n";
-                            factura += "Direccion: Av. Las Ferias, C.C. Isora," + "\npiso Mezzanina, local 07\n";
-                            factura += "Telefonos: 0414-4281527 / 0426-2355934\n\n";
-                            // Si tienes un número de recibo generado dinámicamente, por ejemplo desde 'numeroManager':
-
-                            factura += "RECIBO: " + numeroRecibo + "\n\n";
-                            factura += "Estudiante: " + NombresCompletos.Text + "\n";
-                            factura += "Cedula: " + Cedula_ins.Text + "\n";
-                            factura += "Fecha: " + DateTime.Now.ToString("dd/MM/yyyy") + "\n\n";
-                            factura += "Curso: " + cboCursos.Text + "\n";
-                            factura += "Horario: " + Hora.Text + "\n";
-                            factura += "Dia de clase: " + cboDia.Text + "\n";
-                            factura += "Formato de pago: " + cboFormato.Text + "\n";
-                            factura += "Semana que pago: " + txtClase.Text + "\n";
-                            factura += "Tipo de pago: " + cboTipos.Text + "\n";
-                            factura += "Tipo de pago: " + Bancotxt.Text + "\n";
-                            factura += "Tipo de pago: " + Referencia.Text + "\n\n";
-                            factura += "Total: " + Montoini.Text + "\n\n";
-                            factura += "Gracias por su preferencia.\n";
-                            factura += "Recibo generado por CEVENCA.\n";
-
-                            byte[] initCommandBytes = new byte[] { 0x1B, 0x40 };  // Comando ESC @ (reinicia la impresora)
-                            string initCommand = System.Text.Encoding.ASCII.GetString(initCommandBytes);
-                            byte[] cutCommandBytes = new byte[] { 0x1D, 0x56, 0x41, 0x10 };  // Comando de corte. ¡Verifica que sea el correcto para tu modelo!
-                            string cutCommand = System.Text.Encoding.ASCII.GetString(cutCommandBytes);
-                            factura = initCommand + factura + cutCommand;
-
-                            string printerName = "POS-80"; // Reemplaza este valor por el nombre exacto configurado en Windows.
-                            bool resultadoImpresion = RawPrinterHelper.SendStringToPrinter(printerName, factura);
-                            if (resultadoImpresion)
-                            {
-                                MessageBox.Show("Recibo impreso correctamente.", "Impresión", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                MessageBox.Show("Error al imprimir el recibo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                        else
-                        {
-                            if (((Convert.ToInt32(cboFormato.SelectedValue)) == 5) && ((Convert.ToInt32(cboTipos.SelectedValue)) == 3))
-                            {
-                                string factura = "";
-                                factura += "       CEVENCA\n";
-                                factura += "Direccion: Av. Las Ferias, C.C. Isora," + "\npiso Mezzanina, local 07\n";
-                                factura += "Telefonos: 0414-4281527 / 0426-2355934\n\n";
-                                // Si tienes un número de recibo generado dinámicamente, por ejemplo desde 'numeroManager':
-
-                                factura += "RECIBO: " + numeroRecibo + "\n\n";
-                                factura += "Estudiante: " + NombresCompletos.Text + "\n";
-                                factura += "Cedula: " + Cedula_ins.Text + "\n";
-                                factura += "Fecha: " + DateTime.Now.ToString("dd/MM/yyyy") + "\n\n";
-                                factura += "Curso: " + cboCursos.Text + "\n";
-                                factura += "Horario: " + Hora.Text + "\n";
-                                factura += "Dia de clase: " + cboDia.Text + "\n";
-                                factura += "Formato de pago: " + cboFormato.Text + "\n";
-                                factura += "Abono que pago: " + txtClase.Text + "\n";
-                                factura += "Tipo de pago: " + cboTipos.Text + "\n\n";
-                                factura += "Tipo de pago: " + Bancotxt.Text + "\n";
-                                factura += "Tipo de pago: " + Referencia.Text + "\n\n";
-                                factura += "Total: " + Montoini.Text + "\n\n";
-                                factura += "Gracias por su preferencia.\n";
-                                factura += "Recibo generado por CEVENCA.\n";
-
-                                byte[] initCommandBytes = new byte[] { 0x1B, 0x40 };  // Comando ESC @ (reinicia la impresora)
-                                string initCommand = System.Text.Encoding.ASCII.GetString(initCommandBytes);
-                                byte[] cutCommandBytes = new byte[] { 0x1D, 0x56, 0x41, 0x10 };  // Comando de corte. ¡Verifica que sea el correcto para tu modelo!
-                                string cutCommand = System.Text.Encoding.ASCII.GetString(cutCommandBytes);
-                                factura = initCommand + factura + cutCommand;
-
-                                string printerName = "POS-80"; // Reemplaza este valor por el nombre exacto configurado en Windows.
-                                bool resultadoImpresion = RawPrinterHelper.SendStringToPrinter(printerName, factura);
-                                if (resultadoImpresion)
-                                {
-                                    MessageBox.Show("Recibo impreso correctamente.", "Impresión", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Error al imprimir el recibo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
-                            }
-                            else
-                            {
-                                if (((Convert.ToInt32(cboFormato.SelectedValue)) == 5) && ((Convert.ToInt32(cboTipos.SelectedValue)) == 4))
-                                {
-                                    string factura = "";
-                                    factura += "       CEVENCA\n";
-                                    factura += "Direccion: Av. Las Ferias, C.C. Isora," + "\npiso Mezzanina, local 07\n";
-                                    factura += "Telefonos: 0414-4281527 / 0426-2355934\n\n";
-                                    // Si tienes un número de recibo generado dinámicamente, por ejemplo desde 'numeroManager':
-
-                                    factura += "RECIBO: " + numeroRecibo + "\n\n";
-                                    factura += "Estudiante: " + NombresCompletos.Text + "\n";
-                                    factura += "Cedula: " + Cedula_ins.Text + "\n";
-                                    factura += "Fecha: " + DateTime.Now.ToString("dd/MM/yyyy") + "\n\n";
-                                    factura += "Curso: " + cboCursos.Text + "\n";
-                                    factura += "Horario: " + Hora.Text + "\n";
-                                    factura += "Dia de clase: " + cboDia.Text + "\n";
-                                    factura += "Formato de pago: " + cboFormato.Text + "\n";
-                                    factura += "Abono que pago: " + txtClase.Text + "\n";
-                                    factura += "Tipo de pago: " + cboTipos.Text + "\n\n";
-                                    factura += "Tipo de pago: " + Bancotxt.Text + "\n";
-                                    factura += "Tipo de pago: " + Referencia.Text + "\n\n";
-                                    factura += "Total: " + Montoini.Text + "\n\n";
-                                    factura += "Gracias por su preferencia.\n";
-                                    factura += "Recibo generado por CEVENCA.\n";
-
-                                    byte[] initCommandBytes = new byte[] { 0x1B, 0x40 };  // Comando ESC @ (reinicia la impresora)
-                                    string initCommand = System.Text.Encoding.ASCII.GetString(initCommandBytes);
-                                    byte[] cutCommandBytes = new byte[] { 0x1D, 0x56, 0x41, 0x10 };  // Comando de corte. ¡Verifica que sea el correcto para tu modelo!
-                                    string cutCommand = System.Text.Encoding.ASCII.GetString(cutCommandBytes);
-                                    factura = initCommand + factura + cutCommand;
-
-                                    string printerName = "POS-80"; // Reemplaza este valor por el nombre exacto configurado en Windows.
-                                    bool resultadoImpresion = RawPrinterHelper.SendStringToPrinter(printerName, factura);
-                                    if (resultadoImpresion)
-                                    {
-                                        MessageBox.Show("Recibo impreso correctamente.", "Impresión", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Error al imprimir el recibo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    }
-
-                                }
-                                else
-                                {
-                                    if (((Convert.ToInt32(cboFormato.SelectedValue)) == 5) && ((Convert.ToInt32(cboTipos.SelectedValue)) == 5))
-                                    {
-                                        string factura = "";
-                                        factura += "       CEVENCA\n";
-                                        factura += "Direccion: Av. Las Ferias, C.C. Isora," + "\npiso Mezzanina, local 07\n";
-                                        factura += "Telefonos: 0414-4281527 / 0426-2355934\n\n";
-                                        // Si tienes un número de recibo generado dinámicamente, por ejemplo desde 'numeroManager':
-
-                                        factura += "RECIBO: " + numeroRecibo + "\n\n";
-                                        factura += "Estudiante: " + NombresCompletos.Text + "\n";
-                                        factura += "Cedula: " + Cedula_ins.Text + "\n";
-                                        factura += "Fecha: " + DateTime.Now.ToString("dd/MM/yyyy") + "\n\n";
-                                        factura += "Curso: " + cboCursos.Text + "\n";
-                                        factura += "Horario: " + Hora.Text + "\n";
-                                        factura += "Dia de clase: " + cboDia.Text + "\n";
-                                        factura += "Formato de pago: " + cboFormato.Text + "\n";
-                                        factura += "Abono que pago: " + txtClase.Text + "\n";
-                                        factura += "Tipo de pago: " + cboTipos.Text + "\n\n";
-                                        factura += "Tipo de pago: " + Bancotxt.Text + "\n";
-                                        factura += "Tipo de pago: " + Referencia.Text + "\n\n";
-                                        factura += "Total: " + Montoini.Text + "\n\n";
-                                        factura += "Gracias por su preferencia.\n";
-                                        factura += "Recibo generado por CEVENCA.\n";
-
-                                        byte[] initCommandBytes = new byte[] { 0x1B, 0x40 };  // Comando ESC @ (reinicia la impresora)
-                                        string initCommand = System.Text.Encoding.ASCII.GetString(initCommandBytes);
-                                        byte[] cutCommandBytes = new byte[] { 0x1D, 0x56, 0x41, 0x10 };  // Comando de corte. ¡Verifica que sea el correcto para tu modelo!
-                                        string cutCommand = System.Text.Encoding.ASCII.GetString(cutCommandBytes);
-                                        factura = initCommand + factura + cutCommand;
-
-                                        string printerName = "POS-80"; // Reemplaza este valor por el nombre exacto configurado en Windows.
-                                        bool resultadoImpresion = RawPrinterHelper.SendStringToPrinter(printerName, factura);
-                                        if (resultadoImpresion)
-                                        {
-                                            MessageBox.Show("Recibo impreso correctamente.", "Impresión", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        }
-                                        else
-                                        {
-                                            MessageBox.Show("Error al imprimir el recibo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        }
-
-                                    }
-                                    else
-                                    {
-                                        if (((Convert.ToInt32(cboFormato.SelectedValue)) == 5) && ((Convert.ToInt32(cboTipos.SelectedValue)) == 7))
-                                        {
-                                            string factura = "";
-                                            factura += "       CEVENCA\n";
-                                            factura += "Direccion: Av. Las Ferias, C.C. Isora," + "\npiso Mezzanina, local 07\n";
-                                            factura += "Telefonos: 0414-4281527 / 0426-2355934\n\n";
-                                            // Si tienes un número de recibo generado dinámicamente, por ejemplo desde 'numeroManager':
-
-                                            factura += "RECIBO: " + numeroRecibo + "\n\n";
-                                            factura += "Estudiante: " + NombresCompletos.Text + "\n";
-                                            factura += "Cedula: " + Cedula_ins.Text + "\n";
-                                            factura += "Fecha: " + DateTime.Now.ToString("dd/MM/yyyy") + "\n\n";
-                                            factura += "Curso: " + cboCursos.Text + "\n";
-                                            factura += "Horario: " + Hora.Text + "\n";
-                                            factura += "Dia de clase: " + cboDia.Text + "\n";
-                                            factura += "Formato de pago: " + cboFormato.Text + "\n";
-                                            factura += "Abono que pago: " + txtClase.Text + "\n";
-                                            factura += "Tipo de pago: " + cboTipos.Text + "\n\n";
-                                            factura += "Tipo de pago: " + Bancotxt.Text + "\n";
-                                            factura += "Tipo de pago: " + Referencia.Text + "\n\n";
-                                            factura += "Total: " + Montoini.Text + "\n\n";
-                                            factura += "Gracias por su preferencia.\n";
-                                            factura += "Recibo generado por CEVENCA.\n";
-
-                                            byte[] initCommandBytes = new byte[] { 0x1B, 0x40 };  // Comando ESC @ (reinicia la impresora)
-                                            string initCommand = System.Text.Encoding.ASCII.GetString(initCommandBytes);
-                                            byte[] cutCommandBytes = new byte[] { 0x1D, 0x56, 0x41, 0x10 };  // Comando de corte. ¡Verifica que sea el correcto para tu modelo!
-                                            string cutCommand = System.Text.Encoding.ASCII.GetString(cutCommandBytes);
-                                            factura = initCommand + factura + cutCommand;
-
-                                            string printerName = "POS-80"; // Reemplaza este valor por el nombre exacto configurado en Windows.
-                                            bool resultadoImpresion = RawPrinterHelper.SendStringToPrinter(printerName, factura);
-                                            if (resultadoImpresion)
-                                            {
-                                                MessageBox.Show("Recibo impreso correctamente.", "Impresión", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                            }
-                                            else
-                                            {
-                                                MessageBox.Show("Error al imprimir el recibo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                            }
-
-                                        }
-                                        else
-                                        {
-                                            string factura = "";
-                                            factura += "       CEVENCA\n";
-                                            factura += "Direccion: Av. Las Ferias, C.C. Isora," + "\npiso Mezzanina, local 07\n";
-                                            factura += "Telefonos: 0414-4281527 / 0426-2355934\n\n";
-                                            // Si tienes un número de recibo generado dinámicamente, por ejemplo desde 'numeroManager':
-
-                                            factura += "RECIBO: " + numeroRecibo + "\n\n";
-                                            factura += "Estudiante: " + NombresCompletos.Text + "\n";
-                                            factura += "Cedula: " + Cedula_ins.Text + "\n";
-                                            factura += "Fecha: " + DateTime.Now.ToString("dd/MM/yyyy") + "\n\n";
-                                            factura += "Curso: " + cboCursos.Text + "\n";
-                                            factura += "Horario: " + Hora.Text + "\n";
-                                            factura += "Dia de clase: " + cboDia.Text + "\n";
-                                            factura += "Formato de pago: " + cboFormato.Text + "\n";
-                                            factura += "Semana que pago: " + txtClase.Text + "\n";
-                                            factura += "Tipo de pago: " + cboTipos.Text + "\n\n";
-                                            factura += "Total: " + Montoini.Text + "\n\n";
-                                            factura += "Gracias por su preferencia.\n";
-                                            factura += "Recibo generado por CEVENCA.\n";
-
-                                            byte[] initCommandBytes = new byte[] { 0x1B, 0x40 };  // Comando ESC @ (reinicia la impresora)
-                                            string initCommand = System.Text.Encoding.ASCII.GetString(initCommandBytes);
-                                            byte[] cutCommandBytes = new byte[] { 0x1D, 0x56, 0x41, 0x10 };  // Comando de corte. ¡Verifica que sea el correcto para tu modelo!
-                                            string cutCommand = System.Text.Encoding.ASCII.GetString(cutCommandBytes);
-                                            factura = initCommand + factura + cutCommand;
-
-                                            string printerName = "POS-80"; // Reemplaza este valor por el nombre exacto configurado en Windows.
-                                            bool resultadoImpresion = RawPrinterHelper.SendStringToPrinter(printerName, factura);
-                                            if (resultadoImpresion)
-                                            {
-                                                MessageBox.Show("Recibo impreso correctamente.", "Impresión", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                            }
-                                            else
-                                            {
-                                                MessageBox.Show("Error al imprimir el recibo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                            }
-
-                                        }
-                                            
-                                    }
-                                    
-                                }
-                            }
-                                
-                        }
-                        
-                    }
+                    // Imprime la factura dos veces
+                    string printerName = "POS-80"; // Cambia por el nombre real de tu impresora
+                    ImprimirFacturaDosVeces(factura, printerName);
 
 
-                        // 2. Preparar el SaveFileDialog para el PDF
-                        System.Windows.Forms.SaveFileDialog savefile = new System.Windows.Forms.SaveFileDialog();
-                    savefile.FileName = string.Format("{0}.pdf", DateTime.Now.ToString("ddMMyyyyHHmmss"));
+                    //if ((Convert.ToInt32(cboFormato.SelectedValue))==5)
+                    //{
+                    //    string factura = "";
+                    //    factura += "       CEVENCA\n";
+                    //    factura += "Direccion: Av. Las Ferias, C.C. Isora," + "\npiso Mezzanina, local 07\n";
+                    //    factura += "Telefonos: 0414-4281527 / 0426-2355934\n\n";
+                    //    // Si tienes un número de recibo generado dinámicamente, por ejemplo desde 'numeroManager':
+
+                    //    factura += "RECIBO: " + numeroRecibo + "\n\n";
+                    //    factura += "Estudiante: " + NombresCompletos.Text + "\n";
+                    //    factura += "Cedula: " + Cedula_ins.Text + "\n";
+                    //    factura += "Fecha: " + DateTime.Now.ToString("dd/MM/yyyy") + "\n\n";
+                    //    factura += "Curso: " + cboCursos.Text + "\n";
+                    //    factura += "Horario: " + Hora.Text + "\n";
+                    //    factura += "Dia de clase: " + cboDia.Text + "\n";
+                    //    factura += "Formato de pago: " + cboFormato.Text + "\n";
+                    //    factura += "Abono que pago: " + txtClase.Text + "\n";
+                    //    factura += "Tipo de pago: " + cboTipos.Text + "\n\n";
+                    //    factura += "Total: " + Montoini.Text + "\n\n";
+                    //    factura += "Gracias por su preferencia.\n";
+                    //    factura += "Recibo generado por CEVENCA.\n";
+
+                    //    byte[] initCommandBytes = new byte[] { 0x1B, 0x40 };  // Comando ESC @ (reinicia la impresora)
+                    //    string initCommand = System.Text.Encoding.ASCII.GetString(initCommandBytes);
+                    //    byte[] cutCommandBytes = new byte[] { 0x1D, 0x56, 0x41, 0x10 };  // Comando de corte. ¡Verifica que sea el correcto para tu modelo!
+                    //    string cutCommand = System.Text.Encoding.ASCII.GetString(cutCommandBytes);
+                    //    factura = initCommand + factura + cutCommand;
+
+                    //    string printerName = "POS-80"; // Reemplaza este valor por el nombre exacto configurado en Windows.
+                    //    bool resultadoImpresion = RawPrinterHelper.SendStringToPrinter(printerName, factura);
+                    //    if (resultadoImpresion)
+                    //    {
+                    //        MessageBox.Show("Recibo impreso correctamente.", "Impresión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //    }
+                    //    else
+                    //    {
+                    //        MessageBox.Show("Error al imprimir el recibo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    if (((Convert.ToInt32(cboTipos.SelectedValue)) == 3)|| ((Convert.ToInt32(cboTipos.SelectedValue)) == 4)|| ((Convert.ToInt32(cboTipos.SelectedValue)) == 5) || ((Convert.ToInt32(cboTipos.SelectedValue)) == 7))
+                    //    {
+                    //        string factura = "";
+                    //        factura += "       CEVENCA\n";
+                    //        factura += "Direccion: Av. Las Ferias, C.C. Isora," + "\npiso Mezzanina, local 07\n";
+                    //        factura += "Telefonos: 0414-4281527 / 0426-2355934\n\n";
+                    //        // Si tienes un número de recibo generado dinámicamente, por ejemplo desde 'numeroManager':
+
+                    //        factura += "RECIBO: " + numeroRecibo + "\n\n";
+                    //        factura += "Estudiante: " + NombresCompletos.Text + "\n";
+                    //        factura += "Cedula: " + Cedula_ins.Text + "\n";
+                    //        factura += "Fecha: " + DateTime.Now.ToString("dd/MM/yyyy") + "\n\n";
+                    //        factura += "Curso: " + cboCursos.Text + "\n";
+                    //        factura += "Horario: " + Hora.Text + "\n";
+                    //        factura += "Dia de clase: " + cboDia.Text + "\n";
+                    //        factura += "Formato de pago: " + cboFormato.Text + "\n";
+                    //        factura += "Semana que pago: " + txtClase.Text + "\n";
+                    //        factura += "Tipo de pago: " + cboTipos.Text + "\n";
+                    //        factura += "Tipo de pago: " + Bancotxt.Text + "\n";
+                    //        factura += "Tipo de pago: " + Referencia.Text + "\n\n";
+                    //        factura += "Total: " + Montoini.Text + "\n\n";
+                    //        factura += "Gracias por su preferencia.\n";
+                    //        factura += "Recibo generado por CEVENCA.\n";
+
+                    //        byte[] initCommandBytes = new byte[] { 0x1B, 0x40 };  // Comando ESC @ (reinicia la impresora)
+                    //        string initCommand = System.Text.Encoding.ASCII.GetString(initCommandBytes);
+                    //        byte[] cutCommandBytes = new byte[] { 0x1D, 0x56, 0x41, 0x10 };  // Comando de corte. ¡Verifica que sea el correcto para tu modelo!
+                    //        string cutCommand = System.Text.Encoding.ASCII.GetString(cutCommandBytes);
+                    //        factura = initCommand + factura + cutCommand;
+
+                    //        string printerName = "POS-80"; // Reemplaza este valor por el nombre exacto configurado en Windows.
+                    //        bool resultadoImpresion = RawPrinterHelper.SendStringToPrinter(printerName, factura);
+                    //        if (resultadoImpresion)
+                    //        {
+                    //            MessageBox.Show("Recibo impreso correctamente.", "Impresión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //        }
+                    //        else
+                    //        {
+                    //            MessageBox.Show("Error al imprimir el recibo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //        }
+                    //    }
+                    //    else
+                    //    {
+                    //        if (((Convert.ToInt32(cboFormato.SelectedValue)) == 5) && ((Convert.ToInt32(cboTipos.SelectedValue)) == 3))
+                    //        {
+                    //            string factura = "";
+                    //            factura += "       CEVENCA\n";
+                    //            factura += "Direccion: Av. Las Ferias, C.C. Isora," + "\npiso Mezzanina, local 07\n";
+                    //            factura += "Telefonos: 0414-4281527 / 0426-2355934\n\n";
+                    //            // Si tienes un número de recibo generado dinámicamente, por ejemplo desde 'numeroManager':
+
+                    //            factura += "RECIBO: " + numeroRecibo + "\n\n";
+                    //            factura += "Estudiante: " + NombresCompletos.Text + "\n";
+                    //            factura += "Cedula: " + Cedula_ins.Text + "\n";
+                    //            factura += "Fecha: " + DateTime.Now.ToString("dd/MM/yyyy") + "\n\n";
+                    //            factura += "Curso: " + cboCursos.Text + "\n";
+                    //            factura += "Horario: " + Hora.Text + "\n";
+                    //            factura += "Dia de clase: " + cboDia.Text + "\n";
+                    //            factura += "Formato de pago: " + cboFormato.Text + "\n";
+                    //            factura += "Abono que pago: " + txtClase.Text + "\n";
+                    //            factura += "Tipo de pago: " + cboTipos.Text + "\n\n";
+                    //            factura += "Tipo de pago: " + Bancotxt.Text + "\n";
+                    //            factura += "Tipo de pago: " + Referencia.Text + "\n\n";
+                    //            factura += "Total: " + Montoini.Text + "\n\n";
+                    //            factura += "Gracias por su preferencia.\n";
+                    //            factura += "Recibo generado por CEVENCA.\n";
+
+                    //            byte[] initCommandBytes = new byte[] { 0x1B, 0x40 };  // Comando ESC @ (reinicia la impresora)
+                    //            string initCommand = System.Text.Encoding.ASCII.GetString(initCommandBytes);
+                    //            byte[] cutCommandBytes = new byte[] { 0x1D, 0x56, 0x41, 0x10 };  // Comando de corte. ¡Verifica que sea el correcto para tu modelo!
+                    //            string cutCommand = System.Text.Encoding.ASCII.GetString(cutCommandBytes);
+                    //            factura = initCommand + factura + cutCommand;
+
+                    //            string printerName = "POS-80"; // Reemplaza este valor por el nombre exacto configurado en Windows.
+                    //            bool resultadoImpresion = RawPrinterHelper.SendStringToPrinter(printerName, factura);
+                    //            if (resultadoImpresion)
+                    //            {
+                    //                MessageBox.Show("Recibo impreso correctamente.", "Impresión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //            }
+                    //            else
+                    //            {
+                    //                MessageBox.Show("Error al imprimir el recibo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //            }
+                    //        }
+                    //        else
+                    //        {
+                    //            if (((Convert.ToInt32(cboFormato.SelectedValue)) == 5) && ((Convert.ToInt32(cboTipos.SelectedValue)) == 4))
+                    //            {
+                    //                string factura = "";
+                    //                factura += "       CEVENCA\n";
+                    //                factura += "Direccion: Av. Las Ferias, C.C. Isora," + "\npiso Mezzanina, local 07\n";
+                    //                factura += "Telefonos: 0414-4281527 / 0426-2355934\n\n";
+                    //                // Si tienes un número de recibo generado dinámicamente, por ejemplo desde 'numeroManager':
+
+                    //                factura += "RECIBO: " + numeroRecibo + "\n\n";
+                    //                factura += "Estudiante: " + NombresCompletos.Text + "\n";
+                    //                factura += "Cedula: " + Cedula_ins.Text + "\n";
+                    //                factura += "Fecha: " + DateTime.Now.ToString("dd/MM/yyyy") + "\n\n";
+                    //                factura += "Curso: " + cboCursos.Text + "\n";
+                    //                factura += "Horario: " + Hora.Text + "\n";
+                    //                factura += "Dia de clase: " + cboDia.Text + "\n";
+                    //                factura += "Formato de pago: " + cboFormato.Text + "\n";
+                    //                factura += "Abono que pago: " + txtClase.Text + "\n";
+                    //                factura += "Tipo de pago: " + cboTipos.Text + "\n\n";
+                    //                factura += "Tipo de pago: " + Bancotxt.Text + "\n";
+                    //                factura += "Tipo de pago: " + Referencia.Text + "\n\n";
+                    //                factura += "Total: " + Montoini.Text + "\n\n";
+                    //                factura += "Gracias por su preferencia.\n";
+                    //                factura += "Recibo generado por CEVENCA.\n";
+
+                    //                byte[] initCommandBytes = new byte[] { 0x1B, 0x40 };  // Comando ESC @ (reinicia la impresora)
+                    //                string initCommand = System.Text.Encoding.ASCII.GetString(initCommandBytes);
+                    //                byte[] cutCommandBytes = new byte[] { 0x1D, 0x56, 0x41, 0x10 };  // Comando de corte. ¡Verifica que sea el correcto para tu modelo!
+                    //                string cutCommand = System.Text.Encoding.ASCII.GetString(cutCommandBytes);
+                    //                factura = initCommand + factura + cutCommand;
+
+                    //                string printerName = "POS-80"; // Reemplaza este valor por el nombre exacto configurado en Windows.
+                    //                bool resultadoImpresion = RawPrinterHelper.SendStringToPrinter(printerName, factura);
+                    //                if (resultadoImpresion)
+                    //                {
+                    //                    MessageBox.Show("Recibo impreso correctamente.", "Impresión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //                }
+                    //                else
+                    //                {
+                    //                    MessageBox.Show("Error al imprimir el recibo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //                }
+
+                    //            }
+                    //            else
+                    //            {
+                    //                if (((Convert.ToInt32(cboFormato.SelectedValue)) == 5) && ((Convert.ToInt32(cboTipos.SelectedValue)) == 5))
+                    //                {
+                    //                    string factura = "";
+                    //                    factura += "       CEVENCA\n";
+                    //                    factura += "Direccion: Av. Las Ferias, C.C. Isora," + "\npiso Mezzanina, local 07\n";
+                    //                    factura += "Telefonos: 0414-4281527 / 0426-2355934\n\n";
+                    //                    // Si tienes un número de recibo generado dinámicamente, por ejemplo desde 'numeroManager':
+
+                    //                    factura += "RECIBO: " + numeroRecibo + "\n\n";
+                    //                    factura += "Estudiante: " + NombresCompletos.Text + "\n";
+                    //                    factura += "Cedula: " + Cedula_ins.Text + "\n";
+                    //                    factura += "Fecha: " + DateTime.Now.ToString("dd/MM/yyyy") + "\n\n";
+                    //                    factura += "Curso: " + cboCursos.Text + "\n";
+                    //                    factura += "Horario: " + Hora.Text + "\n";
+                    //                    factura += "Dia de clase: " + cboDia.Text + "\n";
+                    //                    factura += "Formato de pago: " + cboFormato.Text + "\n";
+                    //                    factura += "Abono que pago: " + txtClase.Text + "\n";
+                    //                    factura += "Tipo de pago: " + cboTipos.Text + "\n\n";
+                    //                    factura += "Tipo de pago: " + Bancotxt.Text + "\n";
+                    //                    factura += "Tipo de pago: " + Referencia.Text + "\n\n";
+                    //                    factura += "Total: " + Montoini.Text + "\n\n";
+                    //                    factura += "Gracias por su preferencia.\n";
+                    //                    factura += "Recibo generado por CEVENCA.\n";
+
+                    //                    byte[] initCommandBytes = new byte[] { 0x1B, 0x40 };  // Comando ESC @ (reinicia la impresora)
+                    //                    string initCommand = System.Text.Encoding.ASCII.GetString(initCommandBytes);
+                    //                    byte[] cutCommandBytes = new byte[] { 0x1D, 0x56, 0x41, 0x10 };  // Comando de corte. ¡Verifica que sea el correcto para tu modelo!
+                    //                    string cutCommand = System.Text.Encoding.ASCII.GetString(cutCommandBytes);
+                    //                    factura = initCommand + factura + cutCommand;
+
+                    //                    string printerName = "POS-80"; // Reemplaza este valor por el nombre exacto configurado en Windows.
+                    //                    bool resultadoImpresion = RawPrinterHelper.SendStringToPrinter(printerName, factura);
+                    //                    if (resultadoImpresion)
+                    //                    {
+                    //                        MessageBox.Show("Recibo impreso correctamente.", "Impresión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //                    }
+                    //                    else
+                    //                    {
+                    //                        MessageBox.Show("Error al imprimir el recibo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //                    }
+
+                    //                }
+                    //                else
+                    //                {
+                    //                    if (((Convert.ToInt32(cboFormato.SelectedValue)) == 5) && ((Convert.ToInt32(cboTipos.SelectedValue)) == 7))
+                    //                    {
+                    //                        string factura = "";
+                    //                        factura += "       CEVENCA\n";
+                    //                        factura += "Direccion: Av. Las Ferias, C.C. Isora," + "\npiso Mezzanina, local 07\n";
+                    //                        factura += "Telefonos: 0414-4281527 / 0426-2355934\n\n";
+                    //                        // Si tienes un número de recibo generado dinámicamente, por ejemplo desde 'numeroManager':
+
+                    //                        factura += "RECIBO: " + numeroRecibo + "\n\n";
+                    //                        factura += "Estudiante: " + NombresCompletos.Text + "\n";
+                    //                        factura += "Cedula: " + Cedula_ins.Text + "\n";
+                    //                        factura += "Fecha: " + DateTime.Now.ToString("dd/MM/yyyy") + "\n\n";
+                    //                        factura += "Curso: " + cboCursos.Text + "\n";
+                    //                        factura += "Horario: " + Hora.Text + "\n";
+                    //                        factura += "Dia de clase: " + cboDia.Text + "\n";
+                    //                        factura += "Formato de pago: " + cboFormato.Text + "\n";
+                    //                        factura += "Abono que pago: " + txtClase.Text + "\n";
+                    //                        factura += "Tipo de pago: " + cboTipos.Text + "\n\n";
+                    //                        factura += "Tipo de pago: " + Bancotxt.Text + "\n";
+                    //                        factura += "Tipo de pago: " + Referencia.Text + "\n\n";
+                    //                        factura += "Total: " + Montoini.Text + "\n\n";
+                    //                        factura += "Gracias por su preferencia.\n";
+                    //                        factura += "Recibo generado por CEVENCA.\n";
+
+                    //                        byte[] initCommandBytes = new byte[] { 0x1B, 0x40 };  // Comando ESC @ (reinicia la impresora)
+                    //                        string initCommand = System.Text.Encoding.ASCII.GetString(initCommandBytes);
+                    //                        byte[] cutCommandBytes = new byte[] { 0x1D, 0x56, 0x41, 0x10 };  // Comando de corte. ¡Verifica que sea el correcto para tu modelo!
+                    //                        string cutCommand = System.Text.Encoding.ASCII.GetString(cutCommandBytes);
+                    //                        factura = initCommand + factura + cutCommand;
+
+                    //                        string printerName = "POS-80"; // Reemplaza este valor por el nombre exacto configurado en Windows.
+                    //                        bool resultadoImpresion = RawPrinterHelper.SendStringToPrinter(printerName, factura);
+                    //                        if (resultadoImpresion)
+                    //                        {
+                    //                            MessageBox.Show("Recibo impreso correctamente.", "Impresión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //                        }
+                    //                        else
+                    //                        {
+                    //                            MessageBox.Show("Error al imprimir el recibo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //                        }
+
+                    //                    }
+                    //                    else
+                    //                    {
+                    //                        string factura = "";
+                    //                        factura += "       CEVENCA\n";
+                    //                        factura += "Direccion: Av. Las Ferias, C.C. Isora," + "\npiso Mezzanina, local 07\n";
+                    //                        factura += "Telefonos: 0414-4281527 / 0426-2355934\n\n";
+                    //                        // Si tienes un número de recibo generado dinámicamente, por ejemplo desde 'numeroManager':
+
+                    //                        factura += "RECIBO: " + numeroRecibo + "\n\n";
+                    //                        factura += "Estudiante: " + NombresCompletos.Text + "\n";
+                    //                        factura += "Cedula: " + Cedula_ins.Text + "\n";
+                    //                        factura += "Fecha: " + DateTime.Now.ToString("dd/MM/yyyy") + "\n\n";
+                    //                        factura += "Curso: " + cboCursos.Text + "\n";
+                    //                        factura += "Horario: " + Hora.Text + "\n";
+                    //                        factura += "Dia de clase: " + cboDia.Text + "\n";
+                    //                        factura += "Formato de pago: " + cboFormato.Text + "\n";
+                    //                        factura += "Semana que pago: " + txtClase.Text + "\n";
+                    //                        factura += "Tipo de pago: " + cboTipos.Text + "\n\n";
+                    //                        factura += "Total: " + Montoini.Text + "\n\n";
+                    //                        factura += "Gracias por su preferencia.\n";
+                    //                        factura += "Recibo generado por CEVENCA.\n";
+
+                    //                        byte[] initCommandBytes = new byte[] { 0x1B, 0x40 };  // Comando ESC @ (reinicia la impresora)
+                    //                        string initCommand = System.Text.Encoding.ASCII.GetString(initCommandBytes);
+                    //                        byte[] cutCommandBytes = new byte[] { 0x1D, 0x56, 0x41, 0x10 };  // Comando de corte. ¡Verifica que sea el correcto para tu modelo!
+                    //                        string cutCommand = System.Text.Encoding.ASCII.GetString(cutCommandBytes);
+                    //                        factura = initCommand + factura + cutCommand;
+
+                    //                        string printerName = "POS-80"; // Reemplaza este valor por el nombre exacto configurado en Windows.
+                    //                        bool resultadoImpresion = RawPrinterHelper.SendStringToPrinter(printerName, factura);
+                    //                        if (resultadoImpresion)
+                    //                        {
+                    //                            MessageBox.Show("Recibo impreso correctamente.", "Impresión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //                        }
+                    //                        else
+                    //                        {
+                    //                            MessageBox.Show("Error al imprimir el recibo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //                        }
+
+                    //                    }
+
+                    //                }
+
+                    //            }
+                    //        }
+
+                    //    }
+
+                    //}
+
+
+                    // 2. Preparar el SaveFileDialog para el PDF
+                    System.Windows.Forms.SaveFileDialog savefile = new System.Windows.Forms.SaveFileDialog();
+                    savefile.FileName = string.Format("{0}.pdf", numeroRecibo);
 
 
                     // 4. Cargar y procesar la plantilla HTML
@@ -529,96 +551,188 @@ namespace Sistema_de_cobros
                     // Construir dinámicamente el bloque de detalles (@DETALLES)
                     string detallesHTML = string.Empty;
                     decimal totalMonto = 0m;
-
-                    if (((Convert.ToInt32(cboTipos.SelectedValue)) == 3) || ((Convert.ToInt32(cboTipos.SelectedValue)) == 4) || ((Convert.ToInt32(cboTipos.SelectedValue)) == 5) || ((Convert.ToInt32(cboTipos.SelectedValue)) == 7))
+                    if ((Convert.ToInt32(cboFormato.SelectedValue)) == 5)
                     {
-                        foreach (DataGridViewRow fila in dgvReciboP.Rows)
+                        if (((Convert.ToInt32(cboTipos.SelectedValue)) == 3) || ((Convert.ToInt32(cboTipos.SelectedValue)) == 4) || ((Convert.ToInt32(cboTipos.SelectedValue)) == 5) || ((Convert.ToInt32(cboTipos.SelectedValue)) == 7))
                         {
-                            // Si la fila está vacía o la celda "Curso" es nula, se omite la fila.
-                            if (fila.Cells["Curso"].Value == null)
-                                continue;
-
-                            // Usar el operador null-coalescing para asignar cadena vacía si es null.
-                            string curso = fila.Cells["Curso"].Value?.ToString() ?? "";
-                            string horario = fila.Cells["Horario"].Value?.ToString() ?? "";
-                            string dia = fila.Cells["Dia"].Value?.ToString() ?? "";
-                            string tipo = fila.Cells["Tipo"].Value?.ToString() ?? "";
-                            string clase = fila.Cells["Clase"].Value?.ToString() ?? "";
-                            string formato = fila.Cells["Formato"].Value?.ToString() ?? "";
-                            string banco = fila.Cells["Banco"].Value?.ToString() ?? "";
-                            string referencia = fila.Cells["Referencia"].Value?.ToString() ?? "";
-                            string montoStr = fila.Cells["Monto"].Value?.ToString() ?? "0";
-
-                            // Conversión segura a decimal para sumar el monto.
-                            decimal monto;
-                            if (!decimal.TryParse(montoStr, out monto))
+                            foreach (DataGridViewRow fila in dgvReciboP.Rows)
                             {
-                                monto = 0m;
+                                // Si la fila está vacía o la celda "Curso" es nula, se omite la fila.
+                                if (fila.Cells["Curso"].Value == null)
+                                    continue;
+
+                                // Usar el operador null-coalescing para asignar cadena vacía si es null.
+                                string curso = fila.Cells["Curso"].Value?.ToString() ?? "";
+                                string horario = fila.Cells["Horario"].Value?.ToString() ?? "";
+                                string dia = fila.Cells["Dia"].Value?.ToString() ?? "";
+                                string tipo = fila.Cells["Tipo"].Value?.ToString() ?? "";
+                                string clase = fila.Cells["Clase"].Value?.ToString() ?? "";
+                                string formato = fila.Cells["Formato"].Value?.ToString() ?? "";
+                                string banco = fila.Cells["Banco"].Value?.ToString() ?? "";
+                                string referencia = fila.Cells["Referencia"].Value?.ToString() ?? "";
+                                string montoStr = fila.Cells["Monto"].Value?.ToString() ?? "0";
+
+                                // Conversión segura a decimal para sumar el monto.
+                                decimal monto;
+                                if (!decimal.TryParse(montoStr, out monto))
+                                {
+                                    monto = 0m;
+                                }
+
+                                totalMonto += monto;
+
+                                detallesHTML += "<div class=\"invoice-item\">";
+                                detallesHTML += $"  <div class=\"field\"><span class=\"label\">Curso:</span> {curso}</div>";
+                                detallesHTML += $"  <div class=\"field\"><span class=\"label\">Horario:</span> {horario}</div>";
+                                detallesHTML += $"  <div class=\"field\"><span class=\"label\">Día de clase:</span> {dia}</div>";
+                                detallesHTML += $"  <div class=\"field\"><span class=\"label\">Tipo de pago:</span> {tipo}</div>";
+                                detallesHTML += $"  <div class=\"field\"><span class=\"label\">Número de abono:</span> {clase}</div>";
+                                detallesHTML += $"  <div class=\"field\"><span class=\"label\">Forma de pagar:</span> {formato}</div>";
+                                detallesHTML += $"  <div class=\"field\"><span class=\"label\">Banco:</span> {banco}</div>";
+                                detallesHTML += $"  <div class=\"field\"><span class=\"label\">Referencia:</span> {referencia}</div>";
+                                detallesHTML += "</div>";
                             }
 
-                            totalMonto += monto;
+                            // Agregar bloque de total al final de la sección
+                            detallesHTML += $"<div class=\"total\">Total: {totalMonto.ToString("F2")}</div>";
 
-                            detallesHTML += "<div class=\"invoice-item\">";
-                            detallesHTML += $"  <div class=\"field\"><span class=\"label\">Curso:</span> {curso}</div>";
-                            detallesHTML += $"  <div class=\"field\"><span class=\"label\">Horario:</span> {horario}</div>";
-                            detallesHTML += $"  <div class=\"field\"><span class=\"label\">Día de clase:</span> {dia}</div>";
-                            detallesHTML += $"  <div class=\"field\"><span class=\"label\">Tipo de pago:</span> {tipo}</div>";
-                            detallesHTML += $"  <div class=\"field\"><span class=\"label\">Número de la clase:</span> {clase}</div>";
-                            detallesHTML += $"  <div class=\"field\"><span class=\"label\">Forma de pagar:</span> {formato}</div>";
-                            detallesHTML += $"  <div class=\"field\"><span class=\"label\">Banco:</span> {banco}</div>";
-                            detallesHTML += $"  <div class=\"field\"><span class=\"label\">Referencia:</span> {referencia}</div>";
-                            detallesHTML += "</div>";
+                            // Reemplazar el marcador @DETALLES en el HTML
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DETALLES", detallesHTML);
                         }
+                        else
+                        {
+                            foreach (DataGridViewRow fila in dgvReciboP.Rows)
+                            {
+                                // Si la fila está vacía o la celda "Curso" es nula, se omite la fila.
+                                if (fila.Cells["Curso"].Value == null)
+                                    continue;
 
-                        // Agregar bloque de total al final de la sección
-                        detallesHTML += $"<div class=\"total\">Total: {totalMonto.ToString("F2")}</div>";
+                                // Usar el operador null-coalescing para asignar cadena vacía si es null.
+                                string curso = fila.Cells["Curso"].Value?.ToString() ?? "";
+                                string horario = fila.Cells["Horario"].Value?.ToString() ?? "";
+                                string dia = fila.Cells["Dia"].Value?.ToString() ?? "";
+                                string tipo = fila.Cells["Tipo"].Value?.ToString() ?? "";
+                                string clase = fila.Cells["Clase"].Value?.ToString() ?? "";
+                                string formato = fila.Cells["Formato"].Value?.ToString() ?? "";
+                                string montoStr = fila.Cells["Monto"].Value?.ToString() ?? "0";
 
-                        // Reemplazar el marcador @DETALLES en el HTML
-                        PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DETALLES", detallesHTML);
+                                // Conversión segura a decimal para sumar el monto.
+                                decimal monto;
+                                if (!decimal.TryParse(montoStr, out monto))
+                                {
+                                    monto = 0m;
+                                }
+
+                                totalMonto += monto;
+
+                                detallesHTML += "<div class=\"invoice-item\">";
+                                detallesHTML += $"  <div class=\"field\"><span class=\"label\">Curso:</span> {curso}</div>";
+                                detallesHTML += $"  <div class=\"field\"><span class=\"label\">Horario:</span> {horario}</div>";
+                                detallesHTML += $"  <div class=\"field\"><span class=\"label\">Día de clase:</span> {dia}</div>";
+                                detallesHTML += $"  <div class=\"field\"><span class=\"label\">Tipo de pago:</span> {tipo}</div>";
+                                detallesHTML += $"  <div class=\"field\"><span class=\"label\">Número de abono:</span> {clase}</div>";
+                                detallesHTML += $"  <div class=\"field\"><span class=\"label\">Forma de pagar:</span> {formato}</div>";
+                                detallesHTML += "</div>";
+                            }
+
+                            // Agregar bloque de total al final de la sección
+                            detallesHTML += $"<div class=\"total\">Total: {totalMonto.ToString("F2")}</div>";
+
+                            // Reemplazar el marcador @DETALLES en el HTML
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DETALLES", detallesHTML);
+                        }
                     }
                     else
                     {
-                        foreach (DataGridViewRow fila in dgvReciboP.Rows)
+                        if (((Convert.ToInt32(cboTipos.SelectedValue)) == 3) || ((Convert.ToInt32(cboTipos.SelectedValue)) == 4) || ((Convert.ToInt32(cboTipos.SelectedValue)) == 5) || ((Convert.ToInt32(cboTipos.SelectedValue)) == 7))
                         {
-                            // Si la fila está vacía o la celda "Curso" es nula, se omite la fila.
-                            if (fila.Cells["Curso"].Value == null)
-                                continue;
-
-                            // Usar el operador null-coalescing para asignar cadena vacía si es null.
-                            string curso = fila.Cells["Curso"].Value?.ToString() ?? "";
-                            string horario = fila.Cells["Horario"].Value?.ToString() ?? "";
-                            string dia = fila.Cells["Dia"].Value?.ToString() ?? "";
-                            string tipo = fila.Cells["Tipo"].Value?.ToString() ?? "";
-                            string clase = fila.Cells["Clase"].Value?.ToString() ?? "";
-                            string formato = fila.Cells["Formato"].Value?.ToString() ?? "";
-                            string montoStr = fila.Cells["Monto"].Value?.ToString() ?? "0";
-
-                            // Conversión segura a decimal para sumar el monto.
-                            decimal monto;
-                            if (!decimal.TryParse(montoStr, out monto))
+                            foreach (DataGridViewRow fila in dgvReciboP.Rows)
                             {
-                                monto = 0m;
+                                // Si la fila está vacía o la celda "Curso" es nula, se omite la fila.
+                                if (fila.Cells["Curso"].Value == null)
+                                    continue;
+
+                                // Usar el operador null-coalescing para asignar cadena vacía si es null.
+                                string curso = fila.Cells["Curso"].Value?.ToString() ?? "";
+                                string horario = fila.Cells["Horario"].Value?.ToString() ?? "";
+                                string dia = fila.Cells["Dia"].Value?.ToString() ?? "";
+                                string tipo = fila.Cells["Tipo"].Value?.ToString() ?? "";
+                                string clase = fila.Cells["Clase"].Value?.ToString() ?? "";
+                                string formato = fila.Cells["Formato"].Value?.ToString() ?? "";
+                                string banco = fila.Cells["Banco"].Value?.ToString() ?? "";
+                                string referencia = fila.Cells["Referencia"].Value?.ToString() ?? "";
+                                string montoStr = fila.Cells["Monto"].Value?.ToString() ?? "0";
+
+                                // Conversión segura a decimal para sumar el monto.
+                                decimal monto;
+                                if (!decimal.TryParse(montoStr, out monto))
+                                {
+                                    monto = 0m;
+                                }
+
+                                totalMonto += monto;
+
+                                detallesHTML += "<div class=\"invoice-item\">";
+                                detallesHTML += $"  <div class=\"field\"><span class=\"label\">Curso:</span> {curso}</div>";
+                                detallesHTML += $"  <div class=\"field\"><span class=\"label\">Horario:</span> {horario}</div>";
+                                detallesHTML += $"  <div class=\"field\"><span class=\"label\">Día de clase:</span> {dia}</div>";
+                                detallesHTML += $"  <div class=\"field\"><span class=\"label\">Tipo de pago:</span> {tipo}</div>";
+                                detallesHTML += $"  <div class=\"field\"><span class=\"label\">Número de la clase:</span> {clase}</div>";
+                                detallesHTML += $"  <div class=\"field\"><span class=\"label\">Forma de pagar:</span> {formato}</div>";
+                                detallesHTML += $"  <div class=\"field\"><span class=\"label\">Banco:</span> {banco}</div>";
+                                detallesHTML += $"  <div class=\"field\"><span class=\"label\">Referencia:</span> {referencia}</div>";
+                                detallesHTML += "</div>";
                             }
 
-                            totalMonto += monto;
+                            // Agregar bloque de total al final de la sección
+                            detallesHTML += $"<div class=\"total\">Total: {totalMonto.ToString("F2")}</div>";
 
-                            detallesHTML += "<div class=\"invoice-item\">";
-                            detallesHTML += $"  <div class=\"field\"><span class=\"label\">Curso:</span> {curso}</div>";
-                            detallesHTML += $"  <div class=\"field\"><span class=\"label\">Horario:</span> {horario}</div>";
-                            detallesHTML += $"  <div class=\"field\"><span class=\"label\">Día de clase:</span> {dia}</div>";
-                            detallesHTML += $"  <div class=\"field\"><span class=\"label\">Tipo de pago:</span> {tipo}</div>";
-                            detallesHTML += $"  <div class=\"field\"><span class=\"label\">Número de la clase:</span> {clase}</div>";
-                            detallesHTML += $"  <div class=\"field\"><span class=\"label\">Forma de pagar:</span> {formato}</div>";
-                            detallesHTML += "</div>";
+                            // Reemplazar el marcador @DETALLES en el HTML
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DETALLES", detallesHTML);
                         }
+                        else
+                        {
+                            foreach (DataGridViewRow fila in dgvReciboP.Rows)
+                            {
+                                // Si la fila está vacía o la celda "Curso" es nula, se omite la fila.
+                                if (fila.Cells["Curso"].Value == null)
+                                    continue;
 
-                        // Agregar bloque de total al final de la sección
-                        detallesHTML += $"<div class=\"total\">Total: {totalMonto.ToString("F2")}</div>";
+                                // Usar el operador null-coalescing para asignar cadena vacía si es null.
+                                string curso = fila.Cells["Curso"].Value?.ToString() ?? "";
+                                string horario = fila.Cells["Horario"].Value?.ToString() ?? "";
+                                string dia = fila.Cells["Dia"].Value?.ToString() ?? "";
+                                string tipo = fila.Cells["Tipo"].Value?.ToString() ?? "";
+                                string clase = fila.Cells["Clase"].Value?.ToString() ?? "";
+                                string formato = fila.Cells["Formato"].Value?.ToString() ?? "";
+                                string montoStr = fila.Cells["Monto"].Value?.ToString() ?? "0";
 
-                        // Reemplazar el marcador @DETALLES en el HTML
-                        PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DETALLES", detallesHTML);
+                                // Conversión segura a decimal para sumar el monto.
+                                decimal monto;
+                                if (!decimal.TryParse(montoStr, out monto))
+                                {
+                                    monto = 0m;
+                                }
+
+                                totalMonto += monto;
+
+                                detallesHTML += "<div class=\"invoice-item\">";
+                                detallesHTML += $"  <div class=\"field\"><span class=\"label\">Curso:</span> {curso}</div>";
+                                detallesHTML += $"  <div class=\"field\"><span class=\"label\">Horario:</span> {horario}</div>";
+                                detallesHTML += $"  <div class=\"field\"><span class=\"label\">Día de clase:</span> {dia}</div>";
+                                detallesHTML += $"  <div class=\"field\"><span class=\"label\">Tipo de pago:</span> {tipo}</div>";
+                                detallesHTML += $"  <div class=\"field\"><span class=\"label\">Número de la clase:</span> {clase}</div>";
+                                detallesHTML += $"  <div class=\"field\"><span class=\"label\">Forma de pagar:</span> {formato}</div>";
+                                detallesHTML += "</div>";
+                            }
+
+                            // Agregar bloque de total al final de la sección
+                            detallesHTML += $"<div class=\"total\">Total: {totalMonto.ToString("F2")}</div>";
+
+                            // Reemplazar el marcador @DETALLES en el HTML
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DETALLES", detallesHTML);
+                        }
                     }
-                        
 
                     // 6. Mostrar el diálogo para guardar el PDF y generar el mismo
                     if (savefile.ShowDialog() == DialogResult.OK)
@@ -657,12 +771,12 @@ namespace Sistema_de_cobros
                 }
             }
         }
-        
+
 
         private bool ValidarTextBox()
         {
             // Lista de TextBox para validar
-            List<TextBox> textBoxes = new List<TextBox> { NombresCompletos, Cedula_ins, Montoini, txtClase};
+            List<TextBox> textBoxes = new List<TextBox> { NombresCompletos, Cedula_ins, Montoini, txtClase };
 
             // Verificar cada TextBox
             foreach (var textBox in textBoxes)
@@ -674,9 +788,113 @@ namespace Sistema_de_cobros
                     return false;
                 }
             }
-
-            // Si todos los TextBox tienen contenido, retornamos verdadero
+            if (!Cedula_ins.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("La cédula solo debe contener números.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+           
+            string Monto = Montoini.Text;
+            if (!Monto.All(c => char.IsDigit(c) || c == ','))
+            {
+                MessageBox.Show(
+                    "El monto solo debe contener números y comas (,).",
+                    "Validación",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return false;
+            }
+            if (!Referencia.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("La referencia solo debe contener números.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (!txtClase.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("El número de la clase o abono solo debe contener números.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            string Nombre = NombresCompletos.Text;
+            if (!Nombre.All(c => char.IsLetter(c) || c == ' '))
+            {
+                MessageBox.Show(
+                    "El Nombre solo debe contener letras.",
+                    "Validación",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return false;
+            }
+            string Banco = Bancotxt.Text;
+            if (!Banco.All(c => char.IsLetterOrDigit(c) || c == '%'))
+            {
+                MessageBox.Show("El Banco solo debe contener letras o 100% Banco si es el caso.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
             return true;
+        }
+        // Método para imprimir la factura dos veces
+        private void ImprimirFacturaDosVeces(string factura, string printerName)
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                bool resultadoImpresion = RawPrinterHelper.SendStringToPrinter(printerName, factura);
+                if (!resultadoImpresion)
+                {
+                    MessageBox.Show($"Error al imprimir el recibo número {i + 1}.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+                }
+                else
+                {
+                    MessageBox.Show($"Recibo número {i + 1} impreso correctamente.", "Impresión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        // Método para construir la factura según el caso
+        private string ConstruirFactura(string numeroRecibo, string nombres, string cedula, string curso, string horario, string dia, string formato, string clase, string tipo, string banco, string referencia, string monto)
+        {
+            string factura = "";
+            factura += "       CEVENCA\n";
+            factura += "Rif: J-30475526-0 | Registro MPPE: 0016-1904\n";
+            factura += "Direccion: Av. Las Ferias, C.C. Isora," + "\npiso Mezzanina, local 07\n";
+            factura += "Telefonos: 0414-4281527 / 0426-2355934\n\n";
+            factura += "RECIBO: " + numeroRecibo + "\n\n";
+            factura += "Estudiante: " + NombresCompletos.Text + "\n";
+            factura += "Cedula: " + Cedula_ins.Text + "\n";
+            factura += "Fecha: " + DateTime.Now.ToString("dd/MM/yyyy") + "\n\n";
+            factura += "Curso: " + cboCursos.Text + "\n";
+            factura += "Horario: " + Hora.Text + "\n";
+            factura += "Dia de clase: " + cboDia.Text + "\n";
+            factura += "Formato de pago: " + cboFormato.Text + "\n";
+            if ((Convert.ToInt32(cboFormato.SelectedValue)) == 5)
+            {
+                factura += "Abono que pago: " + txtClase.Text + "\n";
+            }
+            else
+            {
+                factura += "Semana que pago: " + txtClase.Text + "\n";
+            }
+            factura += "Tipo de pago: " + cboTipos.Text + "\n\n";
+            int tipoPago = Convert.ToInt32(cboTipos.SelectedValue);
+            if (tipoPago == 3 || tipoPago == 4 || tipoPago == 5 || tipoPago == 7)
+            {
+                factura += "Banco: " + Bancotxt.Text + "\n";
+                factura += "Referencia: " + Referencia.Text + "\n\n";
+            }
+            factura += "Total: " + Montoini.Text + "\n\n";
+            factura += "Gracias por su preferencia.\n";
+            factura += "Recibo generado por CEVENCA.\n";
+
+            byte[] initCommandBytes = new byte[] { 0x1B, 0x40 };  // Comando ESC @ (reinicia la impresora)
+            string initCommand = System.Text.Encoding.ASCII.GetString(initCommandBytes);
+            byte[] cutCommandBytes = new byte[] { 0x1D, 0x56, 0x41, 0x10 };  // Comando de corte. ¡Verifica que sea el correcto para tu modelo!
+            string cutCommand = System.Text.Encoding.ASCII.GetString(cutCommandBytes);
+            factura = initCommand + factura + cutCommand;
+
+            return factura;
+
         }
 
         private void Busqueda_Click(object sender, EventArgs e)
@@ -706,7 +924,7 @@ namespace Sistema_de_cobros
                     Hora.SelectedIndex = Hora.FindStringExact(estudiante.Hora);
                     cboDia.SelectedIndex = cboDia.FindStringExact(estudiante.Dia);
                 }
-                
+
                 // Opcional: actualizar el autocomplete del TextBox de nombre
                 var autoCompleteData = new AutoCompleteStringCollection();
                 autoCompleteData.Add(estudiante.NombreCompleto);
@@ -717,5 +935,6 @@ namespace Sistema_de_cobros
                 MessageBox.Show("No se encontró ningún estudiante o ocurrió un error: " + Mensaje);
             }
         }
+
     }
 }

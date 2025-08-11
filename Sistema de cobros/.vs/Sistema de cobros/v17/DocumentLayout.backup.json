@@ -6,15 +6,34 @@
       "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|CapaPresentaci\u00F3n||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8A13F5D3-B695-43B4-8C30-0E1CA1153D3D}|CapaPresentaci\u00F3n.csproj|c:\\users\\lorenzo serrano.desktop-llbmagr\\desktop\\\u00E1ngel y fran\\francisco\\software cevenca\\sistema de cobros\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8A13F5D3-B695-43B4-8C30-0E1CA1153D3D}|CapaPresentaci\u00F3n.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{8A13F5D3-B695-43B4-8C30-0E1CA1153D3D}|CapaPresentaci\u00F3n.csproj|c:\\users\\lorenzo serrano.desktop-llbmagr\\desktop\\\u00E1ngel y fran\\francisco\\software cevenca\\sistema de cobros\\registropagos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A13F5D3-B695-43B4-8C30-0E1CA1153D3D}|CapaPresentaci\u00F3n.csproj|solutionrelative:registropagos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8A13F5D3-B695-43B4-8C30-0E1CA1153D3D}|CapaPresentaci\u00F3n.csproj|c:\\users\\lorenzo serrano.desktop-llbmagr\\desktop\\\u00E1ngel y fran\\francisco\\software cevenca\\sistema de cobros\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8A13F5D3-B695-43B4-8C30-0E1CA1153D3D}|CapaPresentaci\u00F3n.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8A13F5D3-B695-43B4-8C30-0E1CA1153D3D}|CapaPresentaci\u00F3n.csproj|c:\\users\\lorenzo serrano.desktop-llbmagr\\desktop\\\u00E1ngel y fran\\francisco\\software cevenca\\sistema de cobros\\registropagos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{8A13F5D3-B695-43B4-8C30-0E1CA1153D3D}|CapaPresentaci\u00F3n.csproj|solutionrelative:registropagos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A68E0EF7-14CE-4719-9FF7-B2CD537CE814}|..\\CapaDatos\\CapaDatos.csproj|c:\\users\\lorenzo serrano.desktop-llbmagr\\desktop\\\u00E1ngel y fran\\francisco\\software cevenca\\capadatos\\licensemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8A13F5D3-B695-43B4-8C30-0E1CA1153D3D}|CapaPresentaci\u00F3n.csproj|C:\\Users\\lorenzo serrano.DESKTOP-LLBMAGR\\Desktop\\\u00C1ngel y Fran\\Francisco\\Software Cevenca\\Sistema de cobros\\inscripciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{8A13F5D3-B695-43B4-8C30-0E1CA1153D3D}|CapaPresentaci\u00F3n.csproj|solutionrelative:inscripciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A13F5D3-B695-43B4-8C30-0E1CA1153D3D}|CapaPresentaci\u00F3n.csproj|C:\\Users\\lorenzo serrano.DESKTOP-LLBMAGR\\Desktop\\\u00C1ngel y Fran\\Francisco\\Software Cevenca\\Sistema de cobros\\inscripciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A13F5D3-B695-43B4-8C30-0E1CA1153D3D}|CapaPresentaci\u00F3n.csproj|solutionrelative:inscripciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A13F5D3-B695-43B4-8C30-0E1CA1153D3D}|CapaPresentaci\u00F3n.csproj|c:\\users\\lorenzo serrano.desktop-llbmagr\\desktop\\\u00E1ngel y fran\\francisco\\software cevenca\\sistema de cobros\\registros.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A13F5D3-B695-43B4-8C30-0E1CA1153D3D}|CapaPresentaci\u00F3n.csproj|solutionrelative:registros.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11A889DA-4676-47C0-92EA-3279C569F89C}|..\\CapaNegocio\\CapaNegocio.csproj|c:\\users\\lorenzo serrano.desktop-llbmagr\\desktop\\\u00E1ngel y fran\\francisco\\software cevenca\\capanegocio\\cn_reporte.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A68E0EF7-14CE-4719-9FF7-B2CD537CE814}|..\\CapaDatos\\CapaDatos.csproj|c:\\users\\lorenzo serrano.desktop-llbmagr\\desktop\\\u00E1ngel y fran\\francisco\\software cevenca\\capadatos\\cd_reporte.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A13F5D3-B695-43B4-8C30-0E1CA1153D3D}|CapaPresentaci\u00F3n.csproj|C:\\Users\\lorenzo serrano.DESKTOP-LLBMAGR\\Desktop\\\u00C1ngel y Fran\\Francisco\\Software Cevenca\\Sistema de cobros\\registros.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{8A13F5D3-B695-43B4-8C30-0E1CA1153D3D}|CapaPresentaci\u00F3n.csproj|solutionrelative:registros.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8A13F5D3-B695-43B4-8C30-0E1CA1153D3D}|CapaPresentaci\u00F3n.csproj|c:\\users\\lorenzo serrano.desktop-llbmagr\\desktop\\\u00E1ngel y fran\\francisco\\software cevenca\\sistema de cobros\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|cc4014f5-b18d-439c-9352-f99d984cca85"
@@ -27,8 +46,106 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 8,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RegistroPagos.cs",
+              "DocumentMoniker": "C:\\Users\\lorenzo serrano.DESKTOP-LLBMAGR\\Desktop\\\u00C1ngel y Fran\\Francisco\\Software Cevenca\\Sistema de cobros\\RegistroPagos.cs",
+              "RelativeDocumentMoniker": "RegistroPagos.cs",
+              "ToolTip": "C:\\Users\\lorenzo serrano.DESKTOP-LLBMAGR\\Desktop\\\u00C1ngel y Fran\\Francisco\\Software Cevenca\\Sistema de cobros\\RegistroPagos.cs",
+              "RelativeToolTip": "RegistroPagos.cs",
+              "ViewState": "AgIAADQDAAAAAAAAAAAQwC4DAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T17:48:54.732Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RegistroPagos.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\lorenzo serrano.DESKTOP-LLBMAGR\\Desktop\\\u00C1ngel y Fran\\Francisco\\Software Cevenca\\Sistema de cobros\\RegistroPagos.cs",
+              "RelativeDocumentMoniker": "RegistroPagos.cs",
+              "ToolTip": "C:\\Users\\lorenzo serrano.DESKTOP-LLBMAGR\\Desktop\\\u00C1ngel y Fran\\Francisco\\Software Cevenca\\Sistema de cobros\\RegistroPagos.cs [Dise\u00F1o]",
+              "RelativeToolTip": "RegistroPagos.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T17:48:45.576Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CN_Reporte.cs",
+              "DocumentMoniker": "C:\\Users\\lorenzo serrano.DESKTOP-LLBMAGR\\Desktop\\\u00C1ngel y Fran\\Francisco\\Software Cevenca\\CapaNegocio\\CN_Reporte.cs",
+              "RelativeDocumentMoniker": "..\\CapaNegocio\\CN_Reporte.cs",
+              "ToolTip": "C:\\Users\\lorenzo serrano.DESKTOP-LLBMAGR\\Desktop\\\u00C1ngel y Fran\\Francisco\\Software Cevenca\\CapaNegocio\\CN_Reporte.cs",
+              "RelativeToolTip": "..\\CapaNegocio\\CN_Reporte.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABgAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T16:54:10.228Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CD_Reporte.cs",
+              "DocumentMoniker": "C:\\Users\\lorenzo serrano.DESKTOP-LLBMAGR\\Desktop\\\u00C1ngel y Fran\\Francisco\\Software Cevenca\\CapaDatos\\CD_Reporte.cs",
+              "RelativeDocumentMoniker": "..\\CapaDatos\\CD_Reporte.cs",
+              "ToolTip": "C:\\Users\\lorenzo serrano.DESKTOP-LLBMAGR\\Desktop\\\u00C1ngel y Fran\\Francisco\\Software Cevenca\\CapaDatos\\CD_Reporte.cs",
+              "RelativeToolTip": "..\\CapaDatos\\CD_Reporte.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAiwBAAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T16:42:41.116Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Registros.cs",
+              "DocumentMoniker": "C:\\Users\\lorenzo serrano.DESKTOP-LLBMAGR\\Desktop\\\u00C1ngel y Fran\\Francisco\\Software Cevenca\\Sistema de cobros\\Registros.cs",
+              "RelativeDocumentMoniker": "Registros.cs",
+              "ToolTip": "C:\\Users\\lorenzo serrano.DESKTOP-LLBMAGR\\Desktop\\\u00C1ngel y Fran\\Francisco\\Software Cevenca\\Sistema de cobros\\Registros.cs",
+              "RelativeToolTip": "Registros.cs",
+              "ViewState": "AgIAAIsAAAAAAAAAAAAcwEwAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-22T15:05:46.857Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Registros.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\lorenzo serrano.DESKTOP-LLBMAGR\\Desktop\\\u00C1ngel y Fran\\Francisco\\Software Cevenca\\Sistema de cobros\\Registros.cs",
+              "RelativeDocumentMoniker": "Registros.cs",
+              "ToolTip": "C:\\Users\\lorenzo serrano.DESKTOP-LLBMAGR\\Desktop\\\u00C1ngel y Fran\\Francisco\\Software Cevenca\\Sistema de cobros\\Registros.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Registros.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-22T15:05:42.864Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Inscripciones.cs",
+              "DocumentMoniker": "C:\\Users\\lorenzo serrano.DESKTOP-LLBMAGR\\Desktop\\\u00C1ngel y Fran\\Francisco\\Software Cevenca\\Sistema de cobros\\Inscripciones.cs",
+              "RelativeDocumentMoniker": "Inscripciones.cs",
+              "ToolTip": "C:\\Users\\lorenzo serrano.DESKTOP-LLBMAGR\\Desktop\\\u00C1ngel y Fran\\Francisco\\Software Cevenca\\Sistema de cobros\\Inscripciones.cs",
+              "RelativeToolTip": "Inscripciones.cs",
+              "ViewState": "AgIAAKYAAAAAAAAAAAAcwJQAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-18T20:29:58.987Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Inscripciones.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\lorenzo serrano.DESKTOP-LLBMAGR\\Desktop\\\u00C1ngel y Fran\\Francisco\\Software Cevenca\\Sistema de cobros\\Inscripciones.cs",
+              "RelativeDocumentMoniker": "Inscripciones.cs",
+              "ToolTip": "C:\\Users\\lorenzo serrano.DESKTOP-LLBMAGR\\Desktop\\\u00C1ngel y Fran\\Francisco\\Software Cevenca\\Sistema de cobros\\Inscripciones.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Inscripciones.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-18T20:25:59.566Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -40,44 +157,6 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-05-22T14:58:10.483Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "LicenseManager.cs",
-              "DocumentMoniker": "C:\\Users\\lorenzo serrano.DESKTOP-LLBMAGR\\Desktop\\\u00C1ngel y Fran\\Francisco\\Software Cevenca\\CapaDatos\\LicenseManager.cs",
-              "RelativeDocumentMoniker": "..\\CapaDatos\\LicenseManager.cs",
-              "ToolTip": "C:\\Users\\lorenzo serrano.DESKTOP-LLBMAGR\\Desktop\\\u00C1ngel y Fran\\Francisco\\Software Cevenca\\CapaDatos\\LicenseManager.cs",
-              "RelativeToolTip": "..\\CapaDatos\\LicenseManager.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAmwBYAAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T14:49:10.744Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Login.cs",
-              "DocumentMoniker": "C:\\Users\\lorenzo serrano.DESKTOP-LLBMAGR\\Desktop\\\u00C1ngel y Fran\\Francisco\\Software Cevenca\\Sistema de cobros\\Login.cs",
-              "RelativeDocumentMoniker": "Login.cs",
-              "ToolTip": "C:\\Users\\lorenzo serrano.DESKTOP-LLBMAGR\\Desktop\\\u00C1ngel y Fran\\Francisco\\Software Cevenca\\Sistema de cobros\\Login.cs",
-              "RelativeToolTip": "Login.cs",
-              "ViewState": "AgIAAHYAAAAAAAAAAAAAAJkAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T14:40:37.928Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Login.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\lorenzo serrano.DESKTOP-LLBMAGR\\Desktop\\\u00C1ngel y Fran\\Francisco\\Software Cevenca\\Sistema de cobros\\Login.cs",
-              "RelativeDocumentMoniker": "Login.cs",
-              "ToolTip": "C:\\Users\\lorenzo serrano.DESKTOP-LLBMAGR\\Desktop\\\u00C1ngel y Fran\\Francisco\\Software Cevenca\\Sistema de cobros\\Login.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Login.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T14:40:18.657Z",
-              "EditorCaption": " [Dise\u00F1o]"
             }
           ]
         }

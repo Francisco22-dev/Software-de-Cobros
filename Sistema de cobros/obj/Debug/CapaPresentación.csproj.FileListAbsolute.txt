@@ -99,3 +99,4 @@ C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Softwar
 C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\obj\Debug\Sistema de cobros.pdb
 C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\obj\Debug\Sistema_de_cobros.Estudiantes_Viejos.resources
 C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\obj\Debug\Sistema_de_cobros.Datos_Estudiantes_Viejos.resources
+C:\Users\lorenzo serrano.DESKTOP-LLBMAGR\Desktop\Ángel y Fran\Francisco\Software Cevenca\Sistema de cobros\obj\Debug\Sistema_de_cobros.Grafica.resources

@@ -64,27 +64,20 @@ namespace Sistema_de_cobros
 
             int idCurso = selectedCurso.idCursos;
 
+            DateTime fechaRegistro = FechaInicio.Value.Date;  
             DateTime fechaInicio = FechaInicio.Value.Date;
             DateTime fechaFin = FechaFin.Value.Date;
 
-            Console.WriteLine("FechaInicio: " + fechaInicio);
-            Console.WriteLine("FechaFin: " + fechaFin);
-
             DateTime fechaHoy = fechaFin;
 
-            List<Reportes> lista = new List<Reportes>();
+            List<Reportes> lista = new CN_Reporte().Registro(
+                 fechaInicio,
+                 fechaFin,
+                 fechaHoy,
+                 idCurso
+             );
 
-            lista = new CN_Reporte().Registro(
-                fechaInicio,
-                fechaFin,
-                idCurso
-                );
 
-            Console.WriteLine("FechaInicio: " + FechaInicio.Value.ToString("dd/MM/yyyy"));
-            Console.WriteLine("FechaFin: " + FechaFin.Value.ToString("dd/MM/yyyy"));
-            Console.WriteLine("ID del Curso: " + idCurso);
-            
-            Console.WriteLine("Número de registros encontrados: " + lista.Count);
 
             dgvRegistros.Rows.Clear();
             
@@ -105,31 +98,33 @@ namespace Sistema_de_cobros
                     r.Estado,
                     r.NumeroClase,
                     r.Recibo,
-                    r.FechaVencimiento
+                    r.FechaVencimiento,
+                    r.idEstado
                 });
             }
 
-            List<Reportes> listaPendientesHoy = new CN_Reporte().RegistroPendientesHoy(fechaHoy, idCurso);
-            foreach (Reportes r in listaPendientesHoy)
-            {
-                dgvRegistros.Rows.Add(new object[] {
-            r.FechaRegistro,
-            r.Cedula,
-            r.NombreCompleto,
-            r.Curso,
-            r.Horario,
-            r.Día,
-            r.MontoTotal,
-            r.TipoPago,
-            r.Concepto,
-            r.Banco,
-            r.Referencia,
-            r.Estado,
-            r.NumeroClase,
-            r.Recibo,
-            r.FechaVencimiento
-            });
-            }
+            //List<Reportes> listaPendientesHoy = new CN_Reporte().RegistroPendientesHoy(fechaHoy, idCurso);
+            //foreach (Reportes r in listaPendientesHoy)
+            //{
+            //    dgvRegistros.Rows.Add(new object[] {
+            //r.FechaRegistro,
+            //r.Cedula,
+            //r.NombreCompleto,
+            //r.Curso,
+            //r.Horario,
+            //r.Día,
+            //r.MontoTotal,
+            //r.TipoPago,
+            //r.Concepto,
+            //r.Banco,
+            //r.Referencia,
+            //r.Estado,
+            //r.NumeroClase,
+            //r.Recibo,
+            //r.FechaVencimiento,
+            //r.idEstado
+            //});
+            //}
 
         }
 
@@ -188,5 +183,59 @@ namespace Sistema_de_cobros
             }
         }
 
+        private void Borrar_Click(object sender, EventArgs e)
+        {
+            if (dgvRegistros.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Por favor, selecciona una fila para eliminar.");
+                return;
+            }
+            if (MessageBox.Show("¿Desea eliminar el registro?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                try
+                {
+                    int id = Convert.ToInt32(dgvRegistros.SelectedRows[0].Cells["idEstado"].Value);
+
+                    using (SqlConnection conexion = new SqlConnection(Conexion.cadena))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("sp_Eliminar", conexion))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@idEstado", id);
+
+                            // Agrega el parámetro de salida
+                            SqlParameter resultadoParam = new SqlParameter("@Resultado", SqlDbType.Int);
+                            resultadoParam.Direction = ParameterDirection.Output;
+                            cmd.Parameters.Add(resultadoParam);
+
+                            conexion.Open();
+                            int filasAfectadas = cmd.ExecuteNonQuery();
+
+                            // Lee el parámetro de salida después de ejecutar el SP
+                            int resultado = Convert.ToInt32(cmd.Parameters["@Resultado"].Value);
+
+                            // Puedes usar 'resultado' para mostrar un mensaje más específico
+                            if (resultado == 1)
+                            {
+                                MessageBox.Show("El registro se borró correctamente.");
+                                Buscar_Click(null, null);
+                            }
+                            else if (resultado == 0)
+                            {
+                                MessageBox.Show("No se borró ningún registro. Verifica la información.");
+                            }
+                            else
+                            {
+                                MessageBox.Show("El procedimiento no devolvió un resultado esperado.");
+                            } 
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ocurrió un error al eliminar el registro: " + ex.Message);
+                }
+            }
+        }
     }
 }

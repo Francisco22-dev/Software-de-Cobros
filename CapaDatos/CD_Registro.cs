@@ -51,7 +51,6 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("@NombreCompleto", obj.NombreCompleto);
                     cmd.Parameters.AddWithValue("@Cedula", obj.Cedula);
                     cmd.Parameters.AddWithValue("@Telefono", obj.Telefono);
-                    cmd.Parameters.AddWithValue("@Correo", obj.Correo);
                     cmd.Parameters.AddWithValue("@idCursos", obj.oCursos.idCursos);
                     cmd.Parameters.AddWithValue("@idHorario", obj.oHorario.idHorario);
                     cmd.Parameters.AddWithValue("@Montoini", obj.Montoini);
@@ -62,7 +61,7 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("@Bancos", obj.Bancos);
                     cmd.Parameters.AddWithValue("@idConcepto", obj.oConcepto.idConcepto);
                     cmd.Parameters.AddWithValue("@Recibo", obj.Recibo);
-                    cmd.Parameters.AddWithValue("@Inscripcion", Pagos);
+                    cmd.Parameters.AddWithValue("@Pago", obj.Pago);
                     cmd.Parameters.Add("@Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("@Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -97,7 +96,7 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("@NombreCompleto", obj.NombreCompleto);
                     cmd.Parameters.AddWithValue("@Cedula", obj.Cedula);
                     cmd.Parameters.AddWithValue("@Telefono", obj.Telefono);
-                    cmd.Parameters.AddWithValue("@Nota", obj.Correo);
+                    cmd.Parameters.AddWithValue("@Nota", obj.Nota);
                     cmd.Parameters.Add("@Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("@Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;

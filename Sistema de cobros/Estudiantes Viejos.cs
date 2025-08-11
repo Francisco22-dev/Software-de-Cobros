@@ -68,7 +68,7 @@ namespace Sistema_de_cobros
                     NombreCompleto = NombresCompletos.Text,
                     Cedula = Cedula_ins.Text,
                     Telefono = Telefono.Text,
-                    Correo = Correodgv.Text
+                    Nota = Correodgv.Text
                 };
 
                 bool resultado = new CN_Registro().Registrar_Estudiantes_Viejos(estudiante, Registro, out string mensaje);

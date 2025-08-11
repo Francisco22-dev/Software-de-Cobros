@@ -41,15 +41,29 @@ namespace Sistema_de_cobros
             decimal transferenciaCounter = 0;
             decimal efectivoCounter = 0;
             decimal depositoCounter = 0;
+            decimal transferenciaCounterINS = 0;
+            decimal efectivoCounterINS = 0;
+            decimal depositoCounterINS = 0;
+            decimal totalDivisaelectroINS = 0;
+            decimal totalDivisINS = 0;
             decimal tarjetaCounter = 0;
             decimal totalDivisaelectro = 0;
             decimal totalDiviselec = 0;
+            decimal totalDivisU = 0;
+            decimal pagomovilCounterU = 0;
+            decimal transferenciaCounterU = 0;
+            decimal efectivoCounterU = 0;
+            decimal depositoCounterU = 0;
+            decimal tarjetaCounterU = 0;
+            decimal totalDiviselecU = 0;
+            decimal IncripcionesPagomovil = 0;
+            decimal IncripcionesPunto = 0;
 
             // Contador para "Pago mensual"
             int pagoMensualCounter = 0;
             int pagoQuincenalCounter = 0;
             int InscripcionesCounter = 0;
-           
+            int inscripcionesSumadas = 0;
 
             foreach (DataGridViewRow row in dgvCorteD.Rows)
             {
@@ -160,43 +174,55 @@ namespace Sistema_de_cobros
                             }
                             else if (concepto == "inscripción")
                             {
-                                InscripcionesCounter++;
-                                if (tipo == "divisa en efectivo")
-                                {
-                                    totalDivisa += monto;
+                                if (inscripcionesSumadas == 0) {
+                                    if (tipo == "divisa en efectivo")
+                                    {
+                                        totalDivisa += monto;
+                                        totalDivisINS += monto;
+                                    }
+                                    if (tipo == "divisa electronica")
+                                    {
+                                        totalDivisaelectro += monto;
+                                        totalDivisaelectroINS += monto;
+                                    }
+                                    else if (tipo == "bolivares en efectivo" ||
+                                             tipo == "transferencia" ||
+                                             tipo == "deposito" ||
+                                             tipo == "pago movil" ||
+                                             tipo == "punto")
+                                    {
+                                        totalBs += monto;
+                                    }
+                                    if (tipo == "pago movil")
+                                    {
+                                        pagomovilCounter += monto;
+                                        IncripcionesPagomovil += monto;
+                                    }
+                                    else if (tipo == "transferencia")
+                                    {
+                                        transferenciaCounter += monto;
+                                        transferenciaCounterINS += monto;
+                                    }
+                                    else if (tipo == "bolivares en efectivo")
+                                    {
+                                        efectivoCounter += monto;
+                                        efectivoCounterINS += monto;
+                                    }
+                                    else if (tipo == "deposito")
+                                    {
+                                        depositoCounter += monto;
+                                        depositoCounterINS += monto;
+                                    }
+                                    else if (tipo == "punto")
+                                    {
+                                        tarjetaCounter += monto;
+                                        IncripcionesPunto += monto;
+                                    }
+                                    InscripcionesCounter++;
                                 }
-                                if (tipo == "divisa electronica")
-                                {
-                                    totalDivisaelectro += monto;
-                                }
-                                else if (tipo == "bolivares en efectivo" ||
-                                         tipo == "transferencia" ||
-                                         tipo == "deposito" ||
-                                         tipo == "pago movil" ||
-                                         tipo == "punto")
-                                {
-                                    totalBs += monto;
-                                }
-                                if (tipo == "pago movil")
-                                {
-                                    pagomovilCounter += monto;
-                                }
-                                else if (tipo == "transferencia")
-                                {
-                                    transferenciaCounter += monto;
-                                }
-                                else if (tipo == "bolivares en efectivo")
-                                {
-                                    efectivoCounter += monto;
-                                }
-                                else if (tipo == "deposito")
-                                {
-                                    depositoCounter += monto;
-                                }
-                                else if (tipo == "punto")
-                                {
-                                    tarjetaCounter += monto;
-                                }
+                                inscripcionesSumadas++;
+                                if (inscripcionesSumadas == 2)
+                                    inscripcionesSumadas = 0;
                             }
                             else
                             {
@@ -245,9 +271,11 @@ namespace Sistema_de_cobros
                         }
                     }     }    }
             
-            labelBs.Text = "Total de Pagos en Bolívares: " + totalBs.ToString("N2");
-            labelDivisa.Text = "Total de Pagos en Divisa en efectivo: " + totalDivisa.ToString();
-            D2.Text = "Total de Pagos en Divisa Electrónica: " + totalDivisaelectro.ToString();
+            labelBs.Text = "Bolívares: " + totalBs.ToString("N2");
+            labelDivisa.Text = "Divisa en efectivo: " + totalDivisa.ToString("N2");
+            TP.Text = "Punto: " + tarjetaCounter.ToString("N2");
+            TM.Text = "Pago Móvil: " + pagomovilCounter.ToString("N2");
+            D2.Text = "Divisa Electrónica: " + totalDivisaelectro.ToString("N2");
 
             foreach (DataGridViewRow row in dgvUniC.Rows)
             {
@@ -266,11 +294,11 @@ namespace Sistema_de_cobros
                             // Acumulamos dependiendo del tipo de pago
                             if (tipo == "divisa en efectivo")
                             {
-                                totalDivis += monto;
+                                totalDivisU += monto;
                             }
                             if (tipo == "divisa electronica")
                             {
-                                totalDiviselec += monto;
+                                totalDiviselecU += monto;
                             }
                             else if (tipo == "bolivares en efectivo" ||
                                      tipo == "transferencia" ||
@@ -283,46 +311,57 @@ namespace Sistema_de_cobros
                             }
                             if (tipo == "pago movil")
                             {
-                                pagomovilCounter += monto;
+                                pagomovilCounterU += monto;
                             }
                             else if (tipo == "transferencia")
                             {
-                                transferenciaCounter += monto;
+                                transferenciaCounterU += monto;
                             }
                             else if (tipo == "bolivares en efectivo")
                             {
-                                efectivoCounter += monto;
+                                efectivoCounterU += monto;
                             }
                             else if (tipo == "deposito")
                             {
-                                depositoCounter += monto;
+                                depositoCounterU += monto;
                             }
                             else if (tipo == "punto")
                             {
-                                tarjetaCounter += monto;
+                                tarjetaCounterU += monto;
                             }
                         }
                     }
                 }
             }
 
-            Bs.Text = "Total de Pagos en Bolívares: " + totalbs.ToString("N2");
-            Divisa.Text = "Total de Pagos en Divisa en efectivo: " + totalDivis.ToString();
-            D1.Text = "Total de Pagos en Divisa Electrónica: " + totalDiviselec.ToString();
+            Bs.Text = "Bolívares: " + totalbs.ToString("N2");
+            TotalP.Text = "Punto: " + tarjetaCounterU.ToString("N2");
+            TotalM.Text = "Pago Móvil: " + pagomovilCounterU.ToString("N2");
+            Divisa.Text = "Divisa en efectivo: " + totalDivis.ToString("N2");
+            D1.Text = "Divisa Electrónica: " + totalDiviselec.ToString("N2");
 
-            GBS.Text = "Total General de Pagos en Bolívares: " + (totalBs + totalbs).ToString();
-            GD.Text = "Total General de Pagos en Divisa en efectivo: " + (totalDivisa + totalDivis).ToString();
-            DivisaElectronica.Text = "Total de Pagos en Divisa Electrónica: " + (totalDivisaelectro + totalDiviselec).ToString();
+            GBS.Text = "Bolívares: " + (totalBs + totalbs).ToString("N2");
+            GD.Text = "Divisa en efectivo: " + (totalDivisa + totalDivis).ToString("N2");
+            DivisaElectronica.Text = "Divisa Electrónica: " + (totalDivisaelectro + totalDiviselec).ToString("N2");
+            GPunto.Text = "Punto: " + (tarjetaCounter + tarjetaCounterU).ToString("N2");
+            GMovil.Text = "Pago Móvil: " + (pagomovilCounter + tarjetaCounterU).ToString("N2");
             decimal Totalmaximo = totalBs + totalbs;
             decimal Totalmaximo1 = totalDivisa + totalDivis;
             TotalBS.Text = Convert.ToString(Totalmaximo);
             TotalDivisa.Text = Convert.ToString(Totalmaximo1);
             inscripcionesCounter.Text = Convert.ToString(InscripcionesCounter);
-            PagoMovil.Text = Convert.ToString(pagomovilCounter);
-            Transfe.Text = Convert.ToString(transferenciaCounter);
-            Deposito.Text = Convert.ToString(depositoCounter);
-            Efec.Text = Convert.ToString(efectivoCounter);
-            Tarjeta.Text = Convert.ToString(tarjetaCounter);   
+            PagoMovil.Text = Convert.ToString(pagomovilCounter + pagomovilCounterU);
+            Transfe.Text = Convert.ToString(transferenciaCounter + transferenciaCounterU);
+            Deposito.Text = Convert.ToString(depositoCounter + depositoCounterU);
+            Efec.Text = Convert.ToString(efectivoCounter + efectivoCounterU);
+            Tarjeta.Text = Convert.ToString(tarjetaCounter + tarjetaCounterU);   
+            InscripcionesP.Text = Convert.ToString(IncripcionesPunto);
+            InscripcionesM.Text = Convert.ToString(IncripcionesPagomovil);
+            DepoINS.Text = Convert.ToString(depositoCounterINS);
+            TransfeINS.Text = Convert.ToString(transferenciaCounterINS);
+            EfecINS.Text = Convert.ToString(efectivoCounterINS);
+            DivisINS.Text = Convert.ToString(totalDivisINS);
+            DIvisaElectroINS.Text = Convert.ToString(totalDivisaelectroINS);
             decimal Totalmaximo2 = totalDivisaelectro + totalDiviselec;
             DivisaElectronica1.Text = Convert.ToString(Totalmaximo2);
             ReportePDF.Columns.Add("Curso", "Curso");
@@ -333,6 +372,13 @@ namespace Sistema_de_cobros
             ReportePDF.Columns.Add("Monto", "Monto BS");
             ReportePDF.Columns.Add("Monto2", "Monto Divisa");
             ReportePDF.Columns.Add("Monto3", "Monto Divisa Electrónica");
+            ReportePDF.Columns.Add("TotalIP", "TotalIP");
+            ReportePDF.Columns.Add("TotalIM", "TotalIM");
+            ReportePDF.Columns.Add("TransfeINS","TransfeINS");
+            ReportePDF.Columns.Add("DepoINS", "DepoINS");
+            ReportePDF.Columns.Add("EfecINS", "EfecINS");
+            ReportePDF.Columns.Add("DivisINS", "DivisINS");
+            ReportePDF.Columns.Add("DivisElectroINS", "DivisaElectroINS");
         }
 
         private void CargarDatos()
@@ -409,6 +455,13 @@ namespace Sistema_de_cobros
             row1.Cells["Monto"].Value = TotalBS.Text;
             row1.Cells["Monto2"].Value = TotalDivisa.Text;
             row1.Cells["Monto3"].Value = DivisaElectronica1.Text;
+            row1.Cells["TotalIP"].Value = InscripcionesP.Text;
+            row1.Cells["TotalIM"].Value = InscripcionesM.Text;
+            row1.Cells["TransfeINS"].Value = TransfeINS.Text;
+            row1.Cells["DepoINS"].Value = DepoINS.Text;
+            row1.Cells["EfecINS"].Value = EfecINS.Text;
+            row1.Cells["DivisINS"].Value = DivisINS.Text;
+            row1.Cells["DivisElectroINS"].Value = DIvisaElectroINS.Text;
 
             // 2. Preparar el SaveFileDialog para el PDF
             SaveFileDialog savefile = new SaveFileDialog();
@@ -425,6 +478,7 @@ namespace Sistema_de_cobros
 
             // 5. Construir dinámicamente el bloque de detalles para cada registro
             string detallesHTML = string.Empty;
+            string detallesHTMLBOLIVA = string.Empty;
             decimal totalMonto = 0m;
             decimal totalMonto2 = 0m;
             decimal totalMonto3 = 0m;
@@ -434,12 +488,21 @@ namespace Sistema_de_cobros
                 if (fila.IsNewRow) continue; // Evita la fila vacía
 
                 detallesHTML += "<div class=\"invoice-item\">";
-                detallesHTML += "  <div class=\"field\"><span class=\"label\">Pago Móvil:</span> " + (fila.Cells["Curso"].Value != null ? fila.Cells["Curso"].Value.ToString() : "") + "</div>";
-                detallesHTML += "  <div class=\"field\"><span class=\"label\">Efectivo:</span> " + (fila.Cells["Horario"].Value != null ? fila.Cells["Horario"].Value.ToString() : "") + "</div>";
-                detallesHTML += "  <div class=\"field\"><span class=\"label\">Transferencia:</span> " + (fila.Cells["Dia"].Value != null ? fila.Cells["Dia"].Value.ToString() : "") + "</div>";
-                detallesHTML += "  <div class=\"field\"><span class=\"label\">Depósito:</span> " + (fila.Cells["Tipo"].Value != null ? fila.Cells["Tipo"].Value.ToString() : "") + "</div>";
-                detallesHTML += "  <div class=\"field\"><span class=\"label\">Punto de venta:</span> " + (fila.Cells["Tipo1"].Value != null ? fila.Cells["Tipo1"].Value.ToString() : "") + "</div>";
+                detallesHTML += "  <div class=\"field\"><span class=\"label\">Punto:</span> " + (fila.Cells["TotalIP"].Value != null ? fila.Cells["TotalIP"].Value.ToString() : "") + "</div>";
+                detallesHTML += "  <div class=\"field\"><span class=\"label\">Pago Móvil:</span> " + (fila.Cells["TotalIM"].Value != null ? fila.Cells["TotalIM"].Value.ToString() : "") + "</div>";
+                detallesHTML += "  <div class=\"field\"><span class=\"label\">Efectivo:</span> " + (fila.Cells["EfecINS"].Value != null ? fila.Cells["EfecINS"].Value.ToString() : "") + "</div>";
+                detallesHTML += "  <div class=\"field\"><span class=\"label\">Transferencia:</span> " + (fila.Cells["TransfeINS"].Value != null ? fila.Cells["TransfeINS"].Value.ToString() : "") + "</div>";
+                detallesHTML += "  <div class=\"field\"><span class=\"label\">Depósito:</span> " + (fila.Cells["DepoINS"].Value != null ? fila.Cells["DepoINS"].Value.ToString() : "") + "</div>";
+                detallesHTML += "  <div class=\"field\"><span class=\"label\">Divisa en efectivo:</span> " + (fila.Cells["DivisINS"].Value != null ? fila.Cells["DivisINS"].Value.ToString() : "") + "</div>";
+                detallesHTML += "  <div class=\"field\"><span class=\"label\">Divisa Electrónica:</span> " + (fila.Cells["DivisElectroINS"].Value != null ? fila.Cells["DivisElectroINS"].Value.ToString() : "") + "</div>";
                 detallesHTML += "</div>";
+                detallesHTMLBOLIVA += "<div class=\"invoice-item\">";
+                detallesHTMLBOLIVA += "  <div class=\"field\"><span class=\"label\">Pago Móvil:</span> " + (fila.Cells["Curso"].Value != null ? fila.Cells["Curso"].Value.ToString() : "") + "</div>";
+                detallesHTMLBOLIVA += "  <div class=\"field\"><span class=\"label\">Efectivo:</span> " + (fila.Cells["Horario"].Value != null ? fila.Cells["Horario"].Value.ToString() : "") + "</div>";
+                detallesHTMLBOLIVA += "  <div class=\"field\"><span class=\"label\">Transferencia:</span> " + (fila.Cells["Dia"].Value != null ? fila.Cells["Dia"].Value.ToString() : "") + "</div>";
+                detallesHTMLBOLIVA += "  <div class=\"field\"><span class=\"label\">Depósito:</span> " + (fila.Cells["Tipo"].Value != null ? fila.Cells["Tipo"].Value.ToString() : "") + "</div>";
+                detallesHTMLBOLIVA += "  <div class=\"field\"><span class=\"label\">Punto de venta:</span> " + (fila.Cells["Tipo1"].Value != null ? fila.Cells["Tipo1"].Value.ToString() : "") + "</div>";
+                detallesHTMLBOLIVA += "</div>";
 
                 // Sumamos el monto (se asume que es un valor convertible a decimal)
                 decimal monto;
@@ -460,6 +523,7 @@ namespace Sistema_de_cobros
             }
 
             // Reemplazar el marcador de detalles en la plantilla HTML
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DETALLESBOLIVA", detallesHTMLBOLIVA);
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DETALLES", detallesHTML);
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@BS", totalMonto.ToString("F2"));
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DIVISA", totalMonto2.ToString("F2"));

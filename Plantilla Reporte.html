@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
-  <title>Recibo</title>
+  <title>REPORTE DIARIO</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -109,10 +109,19 @@
     <div class="recibo-info">
       Total de inscripciones del día: @Numero
     </div>
+    <div class="recibo-info">
+      Total de bolívares de inscripciones:
+    </div>
     
     <!-- Datos del cliente -->
     <div class="client-info">
       @DETALLES
+    </div>
+    <div class="recibo-info">
+      Total de bolívares general:
+    </div>
+    <div class="client-info">
+      @DETALLESBOLIVA
     </div>
     
     <!-- Detalles verticales de la factura (se inyectará dinámicamente cada detalle y el total) -->

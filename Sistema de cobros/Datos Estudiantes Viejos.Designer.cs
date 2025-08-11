@@ -40,7 +40,7 @@
             this.Cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreCompleto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Correo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nota = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstu)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,7 +131,7 @@
             this.Cedula,
             this.NombreCompleto,
             this.Telefono,
-            this.Correo});
+            this.Nota});
             this.dgvEstu.Location = new System.Drawing.Point(40, 168);
             this.dgvEstu.Name = "dgvEstu";
             this.dgvEstu.Size = new System.Drawing.Size(863, 251);
@@ -159,11 +159,11 @@
             this.Telefono.HeaderText = "Teléfono";
             this.Telefono.Name = "Telefono";
             // 
-            // Correo
+            // Nota
             // 
-            this.Correo.HeaderText = "Nota";
-            this.Correo.Name = "Correo";
-            this.Correo.Width = 400;
+            this.Nota.HeaderText = "Nota";
+            this.Nota.Name = "Nota";
+            this.Nota.Width = 400;
             // 
             // Datos_Estudiantes_Viejos
             // 
@@ -201,6 +201,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Cedula;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreCompleto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Correo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nota;
     }
 }

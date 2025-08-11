@@ -80,6 +80,22 @@
             this.D2 = new System.Windows.Forms.Label();
             this.D1 = new System.Windows.Forms.Label();
             this.DivisaElectronica1 = new System.Windows.Forms.Label();
+            this.TotalM = new System.Windows.Forms.Label();
+            this.TotalP = new System.Windows.Forms.Label();
+            this.TM = new System.Windows.Forms.Label();
+            this.TP = new System.Windows.Forms.Label();
+            this.GMovil = new System.Windows.Forms.Label();
+            this.GPunto = new System.Windows.Forms.Label();
+            this.InscripcionesP = new System.Windows.Forms.Label();
+            this.InscripcionesM = new System.Windows.Forms.Label();
+            this.DepoINS = new System.Windows.Forms.Label();
+            this.EfecINS = new System.Windows.Forms.Label();
+            this.TransfeINS = new System.Windows.Forms.Label();
+            this.DivisINS = new System.Windows.Forms.Label();
+            this.DIvisaElectroINS = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCorteD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUniC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReportePDF)).BeginInit();
@@ -284,14 +300,14 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Location = new System.Drawing.Point(39, 285);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(268, 89);
+            this.label1.Size = new System.Drawing.Size(268, 146);
             this.label1.TabIndex = 41;
             // 
             // labelDivisa
             // 
             this.labelDivisa.AutoSize = true;
             this.labelDivisa.BackColor = System.Drawing.Color.White;
-            this.labelDivisa.Location = new System.Drawing.Point(53, 325);
+            this.labelDivisa.Location = new System.Drawing.Point(53, 381);
             this.labelDivisa.Name = "labelDivisa";
             this.labelDivisa.Size = new System.Drawing.Size(35, 13);
             this.labelDivisa.TabIndex = 43;
@@ -301,7 +317,7 @@
             // 
             this.labelBs.AutoSize = true;
             this.labelBs.BackColor = System.Drawing.Color.White;
-            this.labelBs.Location = new System.Drawing.Point(53, 299);
+            this.labelBs.Location = new System.Drawing.Point(53, 320);
             this.labelBs.Name = "labelBs";
             this.labelBs.Size = new System.Drawing.Size(35, 13);
             this.labelBs.TabIndex = 42;
@@ -313,14 +329,14 @@
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Location = new System.Drawing.Point(650, 285);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(268, 89);
+            this.label2.Size = new System.Drawing.Size(268, 146);
             this.label2.TabIndex = 44;
             // 
             // Divisa
             // 
             this.Divisa.AutoSize = true;
             this.Divisa.BackColor = System.Drawing.Color.White;
-            this.Divisa.Location = new System.Drawing.Point(663, 325);
+            this.Divisa.Location = new System.Drawing.Point(663, 380);
             this.Divisa.Name = "Divisa";
             this.Divisa.Size = new System.Drawing.Size(35, 13);
             this.Divisa.TabIndex = 46;
@@ -330,7 +346,7 @@
             // 
             this.Bs.AutoSize = true;
             this.Bs.BackColor = System.Drawing.Color.White;
-            this.Bs.Location = new System.Drawing.Point(663, 299);
+            this.Bs.Location = new System.Drawing.Point(663, 319);
             this.Bs.Name = "Bs";
             this.Bs.Size = new System.Drawing.Size(35, 13);
             this.Bs.TabIndex = 45;
@@ -340,16 +356,16 @@
             // 
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Location = new System.Drawing.Point(340, 340);
+            this.label3.Location = new System.Drawing.Point(330, 325);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(281, 98);
+            this.label3.Size = new System.Drawing.Size(296, 113);
             this.label3.TabIndex = 47;
             // 
             // GBS
             // 
             this.GBS.AutoSize = true;
             this.GBS.BackColor = System.Drawing.Color.White;
-            this.GBS.Location = new System.Drawing.Point(350, 353);
+            this.GBS.Location = new System.Drawing.Point(341, 353);
             this.GBS.Name = "GBS";
             this.GBS.Size = new System.Drawing.Size(35, 13);
             this.GBS.TabIndex = 48;
@@ -359,7 +375,7 @@
             // 
             this.GD.AutoSize = true;
             this.GD.BackColor = System.Drawing.Color.White;
-            this.GD.Location = new System.Drawing.Point(350, 385);
+            this.GD.Location = new System.Drawing.Point(341, 402);
             this.GD.Name = "GD";
             this.GD.Size = new System.Drawing.Size(35, 13);
             this.GD.TabIndex = 49;
@@ -377,7 +393,7 @@
             this.Reporte.IconColor = System.Drawing.Color.White;
             this.Reporte.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.Reporte.IconSize = 21;
-            this.Reporte.Location = new System.Drawing.Point(414, 291);
+            this.Reporte.Location = new System.Drawing.Point(418, 279);
             this.Reporte.Name = "Reporte";
             this.Reporte.Size = new System.Drawing.Size(157, 34);
             this.Reporte.TabIndex = 63;
@@ -480,7 +496,7 @@
             // 
             this.DivisaElectronica.AutoSize = true;
             this.DivisaElectronica.BackColor = System.Drawing.Color.White;
-            this.DivisaElectronica.Location = new System.Drawing.Point(350, 415);
+            this.DivisaElectronica.Location = new System.Drawing.Point(341, 419);
             this.DivisaElectronica.Name = "DivisaElectronica";
             this.DivisaElectronica.Size = new System.Drawing.Size(35, 13);
             this.DivisaElectronica.TabIndex = 73;
@@ -490,7 +506,7 @@
             // 
             this.D2.AutoSize = true;
             this.D2.BackColor = System.Drawing.Color.White;
-            this.D2.Location = new System.Drawing.Point(53, 353);
+            this.D2.Location = new System.Drawing.Point(53, 400);
             this.D2.Name = "D2";
             this.D2.Size = new System.Drawing.Size(35, 13);
             this.D2.TabIndex = 74;
@@ -500,7 +516,7 @@
             // 
             this.D1.AutoSize = true;
             this.D1.BackColor = System.Drawing.Color.White;
-            this.D1.Location = new System.Drawing.Point(663, 353);
+            this.D1.Location = new System.Drawing.Point(663, 399);
             this.D1.Name = "D1";
             this.D1.Size = new System.Drawing.Size(35, 13);
             this.D1.TabIndex = 75;
@@ -509,18 +525,198 @@
             // DivisaElectronica1
             // 
             this.DivisaElectronica1.AutoSize = true;
-            this.DivisaElectronica1.Location = new System.Drawing.Point(53, 385);
+            this.DivisaElectronica1.Location = new System.Drawing.Point(12, 392);
             this.DivisaElectronica1.Name = "DivisaElectronica1";
             this.DivisaElectronica1.Size = new System.Drawing.Size(35, 13);
             this.DivisaElectronica1.TabIndex = 76;
             this.DivisaElectronica1.Text = "label4";
             this.DivisaElectronica1.Visible = false;
             // 
+            // TotalM
+            // 
+            this.TotalM.AutoSize = true;
+            this.TotalM.BackColor = System.Drawing.Color.White;
+            this.TotalM.Location = new System.Drawing.Point(663, 340);
+            this.TotalM.Name = "TotalM";
+            this.TotalM.Size = new System.Drawing.Size(35, 13);
+            this.TotalM.TabIndex = 77;
+            this.TotalM.Text = "label1";
+            // 
+            // TotalP
+            // 
+            this.TotalP.AutoSize = true;
+            this.TotalP.BackColor = System.Drawing.Color.White;
+            this.TotalP.Location = new System.Drawing.Point(663, 360);
+            this.TotalP.Name = "TotalP";
+            this.TotalP.Size = new System.Drawing.Size(35, 13);
+            this.TotalP.TabIndex = 78;
+            this.TotalP.Text = "label1";
+            // 
+            // TM
+            // 
+            this.TM.AutoSize = true;
+            this.TM.BackColor = System.Drawing.Color.White;
+            this.TM.Location = new System.Drawing.Point(53, 341);
+            this.TM.Name = "TM";
+            this.TM.Size = new System.Drawing.Size(35, 13);
+            this.TM.TabIndex = 79;
+            this.TM.Text = "label1";
+            // 
+            // TP
+            // 
+            this.TP.AutoSize = true;
+            this.TP.BackColor = System.Drawing.Color.White;
+            this.TP.Location = new System.Drawing.Point(53, 361);
+            this.TP.Name = "TP";
+            this.TP.Size = new System.Drawing.Size(35, 13);
+            this.TP.TabIndex = 80;
+            this.TP.Text = "label1";
+            // 
+            // GMovil
+            // 
+            this.GMovil.AutoSize = true;
+            this.GMovil.BackColor = System.Drawing.Color.White;
+            this.GMovil.Location = new System.Drawing.Point(341, 370);
+            this.GMovil.Name = "GMovil";
+            this.GMovil.Size = new System.Drawing.Size(35, 13);
+            this.GMovil.TabIndex = 81;
+            this.GMovil.Text = "label4";
+            // 
+            // GPunto
+            // 
+            this.GPunto.AutoSize = true;
+            this.GPunto.BackColor = System.Drawing.Color.White;
+            this.GPunto.Location = new System.Drawing.Point(341, 386);
+            this.GPunto.Name = "GPunto";
+            this.GPunto.Size = new System.Drawing.Size(35, 13);
+            this.GPunto.TabIndex = 82;
+            this.GPunto.Text = "label4";
+            // 
+            // InscripcionesP
+            // 
+            this.InscripcionesP.AutoSize = true;
+            this.InscripcionesP.Location = new System.Drawing.Point(12, 405);
+            this.InscripcionesP.Name = "InscripcionesP";
+            this.InscripcionesP.Size = new System.Drawing.Size(35, 13);
+            this.InscripcionesP.TabIndex = 83;
+            this.InscripcionesP.Text = "label4";
+            this.InscripcionesP.Visible = false;
+            // 
+            // InscripcionesM
+            // 
+            this.InscripcionesM.AutoSize = true;
+            this.InscripcionesM.Location = new System.Drawing.Point(12, 418);
+            this.InscripcionesM.Name = "InscripcionesM";
+            this.InscripcionesM.Size = new System.Drawing.Size(35, 13);
+            this.InscripcionesM.TabIndex = 84;
+            this.InscripcionesM.Text = "label4";
+            this.InscripcionesM.Visible = false;
+            // 
+            // DepoINS
+            // 
+            this.DepoINS.AutoSize = true;
+            this.DepoINS.Location = new System.Drawing.Point(12, 431);
+            this.DepoINS.Name = "DepoINS";
+            this.DepoINS.Size = new System.Drawing.Size(35, 13);
+            this.DepoINS.TabIndex = 85;
+            this.DepoINS.Text = "label4";
+            this.DepoINS.Visible = false;
+            // 
+            // EfecINS
+            // 
+            this.EfecINS.AutoSize = true;
+            this.EfecINS.Location = new System.Drawing.Point(53, 431);
+            this.EfecINS.Name = "EfecINS";
+            this.EfecINS.Size = new System.Drawing.Size(35, 13);
+            this.EfecINS.TabIndex = 86;
+            this.EfecINS.Text = "label4";
+            this.EfecINS.Visible = false;
+            // 
+            // TransfeINS
+            // 
+            this.TransfeINS.AutoSize = true;
+            this.TransfeINS.Location = new System.Drawing.Point(94, 431);
+            this.TransfeINS.Name = "TransfeINS";
+            this.TransfeINS.Size = new System.Drawing.Size(35, 13);
+            this.TransfeINS.TabIndex = 87;
+            this.TransfeINS.Text = "label4";
+            this.TransfeINS.Visible = false;
+            // 
+            // DivisINS
+            // 
+            this.DivisINS.AutoSize = true;
+            this.DivisINS.Location = new System.Drawing.Point(135, 431);
+            this.DivisINS.Name = "DivisINS";
+            this.DivisINS.Size = new System.Drawing.Size(35, 13);
+            this.DivisINS.TabIndex = 88;
+            this.DivisINS.Text = "label4";
+            this.DivisINS.Visible = false;
+            // 
+            // DIvisaElectroINS
+            // 
+            this.DIvisaElectroINS.AutoSize = true;
+            this.DIvisaElectroINS.Location = new System.Drawing.Point(176, 431);
+            this.DIvisaElectroINS.Name = "DIvisaElectroINS";
+            this.DIvisaElectroINS.Size = new System.Drawing.Size(35, 13);
+            this.DIvisaElectroINS.TabIndex = 89;
+            this.DIvisaElectroINS.Text = "label4";
+            this.DIvisaElectroINS.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.White;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(341, 334);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(88, 13);
+            this.label4.TabIndex = 90;
+            this.label4.Text = "Total General:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.White;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(53, 297);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(178, 13);
+            this.label5.TabIndex = 91;
+            this.label5.Text = "Total De los Pagos de Clases:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.White;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(663, 297);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(197, 13);
+            this.label6.TabIndex = 92;
+            this.label6.Text = "Total De los Pagos de Uniformes:";
+            // 
             // CorteD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(943, 450);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.DIvisaElectroINS);
+            this.Controls.Add(this.DivisINS);
+            this.Controls.Add(this.TransfeINS);
+            this.Controls.Add(this.EfecINS);
+            this.Controls.Add(this.DepoINS);
+            this.Controls.Add(this.InscripcionesM);
+            this.Controls.Add(this.InscripcionesP);
+            this.Controls.Add(this.GPunto);
+            this.Controls.Add(this.GMovil);
+            this.Controls.Add(this.TP);
+            this.Controls.Add(this.TM);
+            this.Controls.Add(this.TotalP);
+            this.Controls.Add(this.TotalM);
             this.Controls.Add(this.DivisaElectronica1);
             this.Controls.Add(this.D1);
             this.Controls.Add(this.D2);
@@ -611,5 +807,21 @@
         private System.Windows.Forms.Label D2;
         private System.Windows.Forms.Label D1;
         private System.Windows.Forms.Label DivisaElectronica1;
+        private System.Windows.Forms.Label TotalM;
+        private System.Windows.Forms.Label TotalP;
+        private System.Windows.Forms.Label TM;
+        private System.Windows.Forms.Label TP;
+        private System.Windows.Forms.Label GMovil;
+        private System.Windows.Forms.Label GPunto;
+        private System.Windows.Forms.Label InscripcionesP;
+        private System.Windows.Forms.Label InscripcionesM;
+        private System.Windows.Forms.Label DepoINS;
+        private System.Windows.Forms.Label EfecINS;
+        private System.Windows.Forms.Label TransfeINS;
+        private System.Windows.Forms.Label DivisINS;
+        private System.Windows.Forms.Label DIvisaElectroINS;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

@@ -39,8 +39,7 @@ namespace Sistema_de_cobros
                 r.idEstudiantes,
                 r.Cedula,
                 r.NombreCompleto,
-                r.Telefono,
-                r.Correo
+                r.Telefono
               });
             }
         }
@@ -96,12 +95,13 @@ namespace Sistema_de_cobros
                     using (SqlConnection conexion = new SqlConnection(Conexion.cadena))
                     {
                         // Configuramos el comando para usar el stored procedure sp_Eliminar
-                        using (SqlCommand cmd = new SqlCommand("sp_Eliminar", conexion))
+                        using (SqlCommand cmd = new SqlCommand("Eliminacion", conexion))
                         {
                             cmd.CommandType = CommandType.StoredProcedure;
 
                             // Se añade el parámetro necesario; confirma que tu SP espere un parámetro llamado "@id" (o modifica el nombre)
                             cmd.Parameters.AddWithValue("@idEstudiantes", id);
+                            cmd.Parameters.Add("@Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
 
                             // Abrimos la conexión y ejecutamos el comando
                             conexion.Open();

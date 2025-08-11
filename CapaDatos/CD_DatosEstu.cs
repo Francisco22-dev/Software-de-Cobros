@@ -35,7 +35,6 @@ namespace CapaDatos
                                 idEstudiantes = Convert.ToInt32(dr["idEstudiantes"].ToString()),
                                 Cedula = dr["Cedula"].ToString(),
                                 NombreCompleto = dr["NombreCompleto"].ToString(),
-                                Correo = dr["Correo"].ToString(),
                                 Telefono = dr["Telefono"].ToString()
                                 
                             });
@@ -76,7 +75,7 @@ namespace CapaDatos
                                 Cedula = dr["Cedula"].ToString(),
                                 NombreCompleto = dr["NombreCompleto"].ToString(),
                                 Telefono = dr["Telefono"].ToString(),
-                                Correo = dr["Nota"].ToString()
+                                Nota = dr["Nota"].ToString()
                             });
                         }
                     }

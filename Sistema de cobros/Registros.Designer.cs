@@ -38,11 +38,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.dgvRegistros = new System.Windows.Forms.DataGridView();
-            this.txtCedula = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.Busqueda = new FontAwesome.Sharp.IconButton();
-            this.Limpiar = new FontAwesome.Sharp.IconButton();
-            this.Buscar = new FontAwesome.Sharp.IconButton();
             this.FechaRegistro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreCompleto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +53,13 @@
             this.NumeroClase = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Recibo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtCedula = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.Busqueda = new FontAwesome.Sharp.IconButton();
+            this.Limpiar = new FontAwesome.Sharp.IconButton();
+            this.Buscar = new FontAwesome.Sharp.IconButton();
+            this.Borrar = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistros)).BeginInit();
             this.SuspendLayout();
             // 
@@ -174,78 +176,13 @@
             this.Estado,
             this.NumeroClase,
             this.Recibo,
-            this.FechaVencimiento});
+            this.FechaVencimiento,
+            this.idEstado});
             this.dgvRegistros.Location = new System.Drawing.Point(40, 148);
             this.dgvRegistros.Name = "dgvRegistros";
             this.dgvRegistros.ReadOnly = true;
             this.dgvRegistros.Size = new System.Drawing.Size(863, 261);
             this.dgvRegistros.TabIndex = 18;
-            // 
-            // txtCedula
-            // 
-            this.txtCedula.Location = new System.Drawing.Point(665, 122);
-            this.txtCedula.Name = "txtCedula";
-            this.txtCedula.Size = new System.Drawing.Size(174, 20);
-            this.txtCedula.TabIndex = 20;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(580, 125);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(79, 13);
-            this.label7.TabIndex = 22;
-            this.label7.Text = "Buscar Cédula:";
-            // 
-            // Busqueda
-            // 
-            this.Busqueda.BackColor = System.Drawing.Color.White;
-            this.Busqueda.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.Busqueda.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
-            this.Busqueda.IconColor = System.Drawing.Color.Black;
-            this.Busqueda.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.Busqueda.IconSize = 15;
-            this.Busqueda.Location = new System.Drawing.Point(845, 122);
-            this.Busqueda.Name = "Busqueda";
-            this.Busqueda.Size = new System.Drawing.Size(23, 20);
-            this.Busqueda.TabIndex = 21;
-            this.Busqueda.UseVisualStyleBackColor = false;
-            this.Busqueda.Click += new System.EventHandler(this.Busqueda_Click);
-            // 
-            // Limpiar
-            // 
-            this.Limpiar.BackColor = System.Drawing.Color.White;
-            this.Limpiar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.Limpiar.IconChar = FontAwesome.Sharp.IconChar.Brush;
-            this.Limpiar.IconColor = System.Drawing.Color.Black;
-            this.Limpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.Limpiar.IconSize = 15;
-            this.Limpiar.Location = new System.Drawing.Point(874, 122);
-            this.Limpiar.Name = "Limpiar";
-            this.Limpiar.Size = new System.Drawing.Size(23, 20);
-            this.Limpiar.TabIndex = 19;
-            this.Limpiar.UseVisualStyleBackColor = false;
-            this.Limpiar.Click += new System.EventHandler(this.Limpiar_Click);
-            // 
-            // Buscar
-            // 
-            this.Buscar.BackColor = System.Drawing.Color.White;
-            this.Buscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Buscar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.Buscar.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
-            this.Buscar.IconColor = System.Drawing.Color.Black;
-            this.Buscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.Buscar.IconSize = 15;
-            this.Buscar.Location = new System.Drawing.Point(706, 57);
-            this.Buscar.Name = "Buscar";
-            this.Buscar.Size = new System.Drawing.Size(69, 20);
-            this.Buscar.TabIndex = 16;
-            this.Buscar.Text = "Buscar";
-            this.Buscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Buscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.Buscar.UseVisualStyleBackColor = false;
-            this.Buscar.Click += new System.EventHandler(this.Buscar_Click);
             // 
             // FechaRegistro
             // 
@@ -339,6 +276,100 @@
             this.FechaVencimiento.Name = "FechaVencimiento";
             this.FechaVencimiento.ReadOnly = true;
             // 
+            // idEstado
+            // 
+            this.idEstado.HeaderText = "Pago o no pago";
+            this.idEstado.Name = "idEstado";
+            this.idEstado.ReadOnly = true;
+            this.idEstado.Visible = false;
+            // 
+            // txtCedula
+            // 
+            this.txtCedula.Location = new System.Drawing.Point(665, 122);
+            this.txtCedula.Name = "txtCedula";
+            this.txtCedula.Size = new System.Drawing.Size(174, 20);
+            this.txtCedula.TabIndex = 20;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(580, 125);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(79, 13);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "Buscar Cédula:";
+            // 
+            // Busqueda
+            // 
+            this.Busqueda.BackColor = System.Drawing.Color.White;
+            this.Busqueda.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.Busqueda.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            this.Busqueda.IconColor = System.Drawing.Color.Black;
+            this.Busqueda.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.Busqueda.IconSize = 15;
+            this.Busqueda.Location = new System.Drawing.Point(845, 122);
+            this.Busqueda.Name = "Busqueda";
+            this.Busqueda.Size = new System.Drawing.Size(23, 20);
+            this.Busqueda.TabIndex = 21;
+            this.Busqueda.UseVisualStyleBackColor = false;
+            this.Busqueda.Click += new System.EventHandler(this.Busqueda_Click);
+            // 
+            // Limpiar
+            // 
+            this.Limpiar.BackColor = System.Drawing.Color.White;
+            this.Limpiar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.Limpiar.IconChar = FontAwesome.Sharp.IconChar.Brush;
+            this.Limpiar.IconColor = System.Drawing.Color.Black;
+            this.Limpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.Limpiar.IconSize = 15;
+            this.Limpiar.Location = new System.Drawing.Point(874, 122);
+            this.Limpiar.Name = "Limpiar";
+            this.Limpiar.Size = new System.Drawing.Size(23, 20);
+            this.Limpiar.TabIndex = 19;
+            this.Limpiar.UseVisualStyleBackColor = false;
+            this.Limpiar.Click += new System.EventHandler(this.Limpiar_Click);
+            // 
+            // Buscar
+            // 
+            this.Buscar.BackColor = System.Drawing.Color.White;
+            this.Buscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Buscar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.Buscar.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            this.Buscar.IconColor = System.Drawing.Color.Black;
+            this.Buscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.Buscar.IconSize = 15;
+            this.Buscar.Location = new System.Drawing.Point(706, 57);
+            this.Buscar.Name = "Buscar";
+            this.Buscar.Size = new System.Drawing.Size(69, 20);
+            this.Buscar.TabIndex = 16;
+            this.Buscar.Text = "Buscar";
+            this.Buscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Buscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Buscar.UseVisualStyleBackColor = false;
+            this.Buscar.Click += new System.EventHandler(this.Buscar_Click);
+            // 
+            // Borrar
+            // 
+            this.Borrar.BackColor = System.Drawing.Color.Firebrick;
+            this.Borrar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.Borrar.FlatAppearance.BorderSize = 2;
+            this.Borrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Borrar.ForeColor = System.Drawing.Color.White;
+            this.Borrar.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            this.Borrar.IconColor = System.Drawing.Color.White;
+            this.Borrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.Borrar.IconSize = 15;
+            this.Borrar.Location = new System.Drawing.Point(40, 116);
+            this.Borrar.Name = "Borrar";
+            this.Borrar.Size = new System.Drawing.Size(150, 30);
+            this.Borrar.TabIndex = 29;
+            this.Borrar.Text = "Eliminar";
+            this.Borrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Borrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Borrar.UseVisualStyleBackColor = false;
+            this.Borrar.Click += new System.EventHandler(this.Borrar_Click);
+            // 
             // Registros
             // 
             this.AcceptButton = this.Buscar;
@@ -346,6 +377,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.Limpiar;
             this.ClientSize = new System.Drawing.Size(943, 450);
+            this.Controls.Add(this.Borrar);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.Busqueda);
             this.Controls.Add(this.txtCedula);
@@ -386,6 +418,7 @@
         private System.Windows.Forms.TextBox txtCedula;
         private FontAwesome.Sharp.IconButton Busqueda;
         private System.Windows.Forms.Label label7;
+        private FontAwesome.Sharp.IconButton Borrar;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaRegistro;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cedula;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreCompleto;
@@ -401,5 +434,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NumeroClase;
         private System.Windows.Forms.DataGridViewTextBoxColumn Recibo;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaVencimiento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idEstado;
     }
 }

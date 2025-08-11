@@ -12,17 +12,17 @@ namespace CapaNegocio
     {
         private CD_Reporte objcd_Reporte = new CD_Reporte();
 
-        public List<Reportes> Registro(DateTime fechaInicio, DateTime fechaFin, int idCurso)
+        public List<Reportes> Registro(DateTime fecharegistro, DateTime fechaInicio, DateTime fechaFin, int idCurso)
         {
-            return objcd_Reporte.Registro(fechaInicio, fechaFin, idCurso);
+            return objcd_Reporte.Registro(fecharegistro, fechaInicio, fechaFin, idCurso);
         }
 
-        private CD_Reporte objcd_ReportePendientes = new CD_Reporte();
+        //private CD_Reporte objcd_ReportePendientes = new CD_Reporte();
 
-        public List<Reportes> RegistroPendientesHoy(DateTime fechaHoy, int idCurso)
-        {
-            return objcd_ReportePendientes.RegistroPendientesHoy(fechaHoy, idCurso);
-        }
+        //public List<Reportes> RegistroPendientesHoy(DateTime fechaHoy, int idCurso)
+        //{
+        //    return objcd_ReportePendientes.RegistroPendientesHoy(fechaHoy, idCurso);
+        //}
 
     }
 

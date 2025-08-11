@@ -31,6 +31,7 @@
             this.Tipo = new System.Windows.Forms.Label();
             this.cboFormato = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CheckP1 = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -47,9 +48,7 @@
             this.Nombre = new System.Windows.Forms.Label();
             this.NombresCompletos = new System.Windows.Forms.TextBox();
             this.Cursoini = new System.Windows.Forms.Label();
-            this.Correo = new System.Windows.Forms.Label();
             this.Cedula_ins = new System.Windows.Forms.TextBox();
-            this.Correodgv = new System.Windows.Forms.TextBox();
             this.Pago_ini = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.Telefono = new System.Windows.Forms.TextBox();
@@ -89,6 +88,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Silver;
+            this.groupBox1.Controls.Add(this.CheckP1);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label4);
@@ -105,9 +105,7 @@
             this.groupBox1.Controls.Add(this.Nombre);
             this.groupBox1.Controls.Add(this.NombresCompletos);
             this.groupBox1.Controls.Add(this.Cursoini);
-            this.groupBox1.Controls.Add(this.Correo);
             this.groupBox1.Controls.Add(this.Cedula_ins);
-            this.groupBox1.Controls.Add(this.Correodgv);
             this.groupBox1.Controls.Add(this.Pago_ini);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.Telefono);
@@ -116,10 +114,20 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(197, 65);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(591, 251);
+            this.groupBox1.Size = new System.Drawing.Size(628, 251);
             this.groupBox1.TabIndex = 56;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Información del estudiante:";
+            // 
+            // CheckP1
+            // 
+            this.CheckP1.AutoSize = true;
+            this.CheckP1.Location = new System.Drawing.Point(316, 214);
+            this.CheckP1.Name = "CheckP1";
+            this.CheckP1.Size = new System.Drawing.Size(301, 20);
+            this.CheckP1.TabIndex = 59;
+            this.CheckP1.Text = "Si el Estudiante paga la primera clase marque";
+            this.CheckP1.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -202,7 +210,7 @@
             this.cboDia.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cboDia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDia.FormattingEnabled = true;
-            this.cboDia.Location = new System.Drawing.Point(387, 99);
+            this.cboDia.Location = new System.Drawing.Point(208, 96);
             this.cboDia.Name = "cboDia";
             this.cboDia.Size = new System.Drawing.Size(163, 24);
             this.cboDia.TabIndex = 38;
@@ -213,7 +221,7 @@
             this.Dia.BackColor = System.Drawing.Color.Silver;
             this.Dia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dia.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Dia.Location = new System.Drawing.Point(384, 80);
+            this.Dia.Location = new System.Drawing.Point(208, 77);
             this.Dia.Name = "Dia";
             this.Dia.Size = new System.Drawing.Size(86, 16);
             this.Dia.TabIndex = 37;
@@ -231,7 +239,7 @@
             this.Hora.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Hora.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Hora.FormattingEnabled = true;
-            this.Hora.Location = new System.Drawing.Point(190, 97);
+            this.Hora.Location = new System.Drawing.Point(9, 96);
             this.Hora.Name = "Hora";
             this.Hora.Size = new System.Drawing.Size(163, 24);
             this.Hora.TabIndex = 35;
@@ -277,31 +285,12 @@
             this.Cursoini.TabIndex = 30;
             this.Cursoini.Text = "Curso:";
             // 
-            // Correo
-            // 
-            this.Correo.AutoSize = true;
-            this.Correo.BackColor = System.Drawing.Color.Silver;
-            this.Correo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Correo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Correo.Location = new System.Drawing.Point(6, 80);
-            this.Correo.Name = "Correo";
-            this.Correo.Size = new System.Drawing.Size(51, 16);
-            this.Correo.TabIndex = 32;
-            this.Correo.Text = "Correo:";
-            // 
             // Cedula_ins
             // 
             this.Cedula_ins.Location = new System.Drawing.Point(316, 45);
             this.Cedula_ins.Name = "Cedula_ins";
             this.Cedula_ins.Size = new System.Drawing.Size(75, 22);
             this.Cedula_ins.TabIndex = 12;
-            // 
-            // Correodgv
-            // 
-            this.Correodgv.Location = new System.Drawing.Point(9, 99);
-            this.Correodgv.Name = "Correodgv";
-            this.Correodgv.Size = new System.Drawing.Size(157, 22);
-            this.Correodgv.TabIndex = 31;
             // 
             // Pago_ini
             // 
@@ -352,7 +341,7 @@
             this.label9.BackColor = System.Drawing.Color.Silver;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label9.Location = new System.Drawing.Point(187, 80);
+            this.label9.Location = new System.Drawing.Point(8, 77);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(117, 16);
             this.label9.TabIndex = 20;
@@ -430,7 +419,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(939, 450);
             this.Controls.Add(this.dgvBoletas);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
@@ -469,9 +458,7 @@
         private System.Windows.Forms.Label Nombre;
         private System.Windows.Forms.TextBox NombresCompletos;
         private System.Windows.Forms.Label Cursoini;
-        private System.Windows.Forms.Label Correo;
         private System.Windows.Forms.TextBox Cedula_ins;
-        private System.Windows.Forms.TextBox Correodgv;
         private System.Windows.Forms.Label Pago_ini;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox Telefono;
@@ -481,5 +468,6 @@
         private FontAwesome.Sharp.IconButton Atras;
         private FontAwesome.Sharp.IconButton Guardar;
         private System.Windows.Forms.DataGridView dgvBoletas;
+        private System.Windows.Forms.CheckBox CheckP1;
     }
 }

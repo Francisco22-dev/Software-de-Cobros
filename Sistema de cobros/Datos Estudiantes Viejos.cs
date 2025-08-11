@@ -71,7 +71,7 @@ namespace Sistema_de_cobros
                 r.Cedula,
                 r.NombreCompleto,
                 r.Telefono,
-                r.Correo
+                r.Nota
               });
             }
         }

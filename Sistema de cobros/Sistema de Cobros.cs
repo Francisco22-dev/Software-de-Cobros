@@ -125,5 +125,10 @@ namespace Sistema_de_cobros
         {
             AbrirFormulario(Registros, new Datos_Estudiantes_Viejos());
         }
+
+        private void Graficas_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(Graficas, new Grafica());
+        }
     }
 }
